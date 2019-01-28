@@ -16,8 +16,8 @@ class Attendence
     students = results.map do |student_data|
       self.hydrate student_data
     end
-
   end
+
 
   # def self.find studentID
   #   con = self.open_connection
