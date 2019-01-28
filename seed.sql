@@ -10,10 +10,11 @@ CREATE TABLE students (
 CREATE TABLE attendence (
   studentid INT,
   FOREIGN KEY(studentid) REFERENCES students(studentid),
-  DateOfAttendence DATE DEFAULT now(),
+  dateofattendence DATE DEFAULT now(),
   status VARCHAR(25),
   comment VARCHAR (255)
 );
 
+IF (n < 5)
 INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 1, 'Authorised Absence', 'Was ill');
