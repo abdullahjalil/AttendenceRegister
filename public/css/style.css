@@ -1,1 +1,11 @@
 /* Style goes here */
+
+.logo {
+  height: 60px;
+  width: 60px;
+}
+
+.navHead {
+  display: flex;
+  align-items: center;
+}
