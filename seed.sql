@@ -16,6 +16,7 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
+<<<<<<< HEAD
 
 -- CREATE PROCEDURE table_insert()
 -- BEGIN
@@ -37,3 +38,9 @@ INSERT INTO students (firstname, lastname) VALUES ('Student4_FN','Student4_LN');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 4, 'Authorised Absence', 'Was ill');
 INSERT INTO students (firstname, lastname) VALUES ('Student5_FN','Student5_LN');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 5, 'Authorised Absence', 'Was ill');
+=======
+INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
+INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 1, 'Authorised Absence', 'Was ill');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 2, 'Authorised Absence', 'Was ill');
+>>>>>>> master
