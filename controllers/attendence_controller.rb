@@ -1,4 +1,4 @@
-class StudentController < Sinatra::Base
+class AttendenceController < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
@@ -11,15 +11,15 @@ class StudentController < Sinatra::Base
   set :views, Proc.new { File.join(root, "views") }
 
   # Index
-  get "/" do
+  get "/attendence" do
 
     @students = Student.all
     erb :"register/index"
   end
 
   # Show
-  get "/:id" do
-    id = params[:id].to_i
+  get "/attendence/:id" do
+    id = params[:studentid].to_i
 
     @students = Student.find id
 
