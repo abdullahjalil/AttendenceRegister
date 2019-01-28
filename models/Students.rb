@@ -3,7 +3,7 @@ class Students
   attr_accessor :StudentID, :FirstName, :LastName
 
   def self.open_connection
-    connection = PG.connect(dbname: "register")
+    con = PG.connect(dbname: "attendence_tracker")
   end
 
   def self.all
@@ -11,7 +11,7 @@ class Students
 
     sql = "SELECT * FROM register ORDER BY StudentID"
 
-    results = connection.exec(sql)
+    results = con.exec(sql)
 
     students = results.map do |student_data|
       self.hydrate student_data

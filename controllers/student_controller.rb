@@ -4,10 +4,6 @@ class StudentController < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  helpers Sinatra::Cookies
-
-  set :sessions, true
-
   # Sets root as the parent-directory of the current file
   set :root, File.join(File.dirname(__FILE__), '..')
 
@@ -18,25 +14,27 @@ class StudentController < Sinatra::Base
   get "/" do
 
     @students = Students.all
-    erb :"sandwiches/index"
+    erb :"students/index"
   end
 
   # Show
   get "/:id" do
     id = params[:id].to_i
 
-    @sandwich = Sandwich.find id
+    @students = Student.find id
 
-    if(!session[:sandwiches])
-      session[:sandwiches] = []
+    if(!session[:students])
+      session[:students] = []
     end
 
-    if !session[:sandwiches].include? @sandwich.title
-      session[:sandwiches].push @sandwich.title
+    if !session[:students].include? @student.title
+      session[:students].push @student.title
     end
 
-    print session[:sandwiches]
+    print session[:students]
 
 
-    erb :"sandwiches/show"
+    erb :"students/show"
   end
+
+end
