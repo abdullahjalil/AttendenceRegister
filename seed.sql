@@ -15,6 +15,10 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
-IF (n < 5)
-INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
-INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 1, 'Authorised Absence', 'Was ill');
+
+DECLARE n INT DEFAULT 1;
+WHILE n < 10 DO
+  INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
+  INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 1, 'Authorised Absence', 'Was ill');
+  SET n = n + 1;
+END WHILE;
