@@ -22,7 +22,10 @@ class Student
   def self.find studentID
     con = self.open_connection
 
-    sql = "SELECT * FROM attendence WHERE studentid=#{studentID}"
+    # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
+
+    sql = "SELECT * FROM students WHERE studentid=#{studentID}"
+    # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
     result = con.exec(sql)
 

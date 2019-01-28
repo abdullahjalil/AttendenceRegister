@@ -16,4 +16,6 @@ CREATE TABLE attendence (
 );
 
 INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
+INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 1, 'Authorised Absence', 'Was ill');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES (now(), 2, 'Authorised Absence', 'Was ill');

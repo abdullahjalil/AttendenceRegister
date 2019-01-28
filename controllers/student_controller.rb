@@ -34,7 +34,6 @@ class StudentController < Sinatra::Base
 
     print session[:students]
 
-
     erb :"register/show"
   end
 
