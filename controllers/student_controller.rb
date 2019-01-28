@@ -28,14 +28,13 @@ class StudentController < Sinatra::Base
       session[:students] = []
     end
 
-    if !session[:students].include? @student.title
-      session[:students].push @student.title
+    if !session[:students].include? @students.studentid
+      session[:students].push @students.studentid
     end
 
     print session[:students]
 
-
-    erb :"students/show"
+    erb :"register/show"
   end
 
 end
