@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class SandwichesController < Sinatra::Base
 
   # Enable Reloader
@@ -98,3 +99,6 @@ class SandwichesController < Sinatra::Base
   end
 
 end
+=======
+# zac harrison
+>>>>>>> master
