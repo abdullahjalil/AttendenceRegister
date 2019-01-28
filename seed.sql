@@ -10,7 +10,7 @@ CREATE TABLE students (
 CREATE TABLE attendence (
   studentid INT,
   FOREIGN KEY(studentid) REFERENCES students(studentid),
-  DateOfAttendence DATE DEFAULT now(),
+  dateofattendence DATE DEFAULT now(),
   status VARCHAR(25),
   comment VARCHAR (255)
 );
