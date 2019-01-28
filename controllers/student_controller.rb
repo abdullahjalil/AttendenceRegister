@@ -14,7 +14,7 @@ class StudentController < Sinatra::Base
   # Index
   get "/" do
 
-    @students = Students.all
+    @students = Student.all
     erb :"register/index"
   end
 
