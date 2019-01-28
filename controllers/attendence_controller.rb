@@ -1,3 +1,4 @@
+
 class AttendenceController < Sinatra::Base
 
   configure :development do
