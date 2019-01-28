@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS Students;
 DROP TABLE IF EXISTS Attendence;
+DROP TABLE IF EXISTS Students;
 
 CREATE TABLE Students (
   StudentID SERIAL PRIMARY KEY,
@@ -10,13 +10,10 @@ CREATE TABLE Students (
 CREATE TABLE Attendence (
   StudentID INT,
   FOREIGN KEY(StudentID) REFERENCES Students(StudentID),
-  DateOfAttendence DATE,
+  DateOfAttendence DATE DEFAULT now(),
   Status VARCHAR(25),
   Comment VARCHAR (255)
 );
 
 INSERT INTO Students (FirstName, LastName) VALUES ('Student_FN','Student_LN');
-INSERT INTO sandwich (title, description) VALUES ('Jam','Description 2');
-INSERT INTO sandwich (title, description) VALUES ('Spam','Description 3');
-INSERT INTO sandwich (title, description) VALUES ('Clam','Description 4');
-INSERT INTO sandwich (title, description) VALUES ('Lamb','Description 5');
+INSERT INTO Attendence (DateOfAttendence, Status, Comment) VALUES (now(),'Authorised Absence', 'Was ill');
