@@ -1,4 +1,4 @@
-# <<<<<<< HEAD
+
 class StudentController < Sinatra::Base
 
   configure :development do
@@ -14,7 +14,7 @@ class StudentController < Sinatra::Base
   # Index
   get "/" do
 
-    @students = Students.all
+    @students = Student.all
     erb :"register/index"
   end
 
@@ -28,17 +28,13 @@ class StudentController < Sinatra::Base
       session[:students] = []
     end
 
-    if !session[:students].include? @student.title
-      session[:students].push @student.title
+    if !session[:students].include? @students.studentid
+      session[:students].push @students.studentid
     end
 
     print session[:students]
 
-
-    erb :"students/show"
+    erb :"register/show"
   end
 
 end
-# =======
-# zac harrison
-# >>>>>>> master

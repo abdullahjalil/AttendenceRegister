@@ -1,6 +1,6 @@
-class Students
+class Student
 
-  attr_accessor :StudentID, :FirstName, :LastName
+  attr_accessor :studentid, :firstname, :lastname
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -9,7 +9,7 @@ class Students
   def self.all
     con = self.open_connection
 
-    sql = "SELECT * FROM Students;"
+    sql = "SELECT * FROM students"
 
     results = con.exec(sql)
 
@@ -20,14 +20,17 @@ class Students
   end
 
   def self.find studentID
-      con = self.open_connection
+    con = self.open_connection
 
-      sql = "SELECT * FROM register WHERE StudentID=#{studentID}"
+    # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
 
-      result = con.exec(sql)
+    sql = "SELECT * FROM students WHERE studentid=#{studentID}"
+    # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
-      student = self.hydrate result[0]
-    end
+    result = con.exec(sql)
+
+    student = self.hydrate result[0]
+  end
 
     # save + update data entry
     # def self.save
@@ -56,11 +59,11 @@ class Students
     # end
 
     def self.hydrate student_data
-      student = Students.new
+      student = Student.new
 
-      student.StudentID = student_data['StudentID']
-      student.FirstName = student_data['FirstName']
-      student.LastName = student_data['LastName']
+      student.studentid = student_data['studentid']
+      student.firstname = student_data['firstname']
+      student.lastname = student_data['lastname']
       student
     end
 

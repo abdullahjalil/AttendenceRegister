@@ -1,1 +1,17 @@
 <h1>Welcome Home</h1>
+
+
+  <table>
+    <tr>
+      <th>Student ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    <% @students.each do |student| %>
+    <tr>
+      <td><a href="/<%= student.studentid %>"><%= student.studentid %></a></td>
+      <td><a href="/<%= student.studentid %>"><%= student.firstname %></a></td>
+      <td><a href="/<%= student.studentid %>"><%= student.lastname %></a></td>
+    </tr>
+    <% end %>
+  </table>
