@@ -1,4 +1,4 @@
-# <<<<<<< HEAD
+
 class StudentController < Sinatra::Base
 
   configure :development do
@@ -39,6 +39,3 @@ class StudentController < Sinatra::Base
   end
 
 end
-# =======
-# zac harrison
-# >>>>>>> master
