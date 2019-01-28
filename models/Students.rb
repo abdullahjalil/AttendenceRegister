@@ -7,7 +7,7 @@ class Students
   end
 
   def self.all
-    connection = self.open_connection
+    con = self.open_connection
 
     sql = "SELECT * FROM register ORDER BY StudentID"
 
@@ -30,30 +30,30 @@ class Students
     end
 
     # save + update data entry
-    def save
-      con = Sandwich.open_connection
-
-      if (self.id)
-        # update
-        sql = "UPDATE sandwich SET title='#{self.title}', description='#{self.description}' WHERE id = #{self.id}"
-      else
-        # add
-        sql = "INSERT INTO sandwich (title, description) VALUES ('#{self.title}','#{self.description}')"
-      end
-
-
-      con.exec(sql)
-
-    end
+    # def self.save
+    #   con = Students.open_connection
+    #
+    #   if (self.StudentID)
+    #     # update
+    #     sql = "UPDATE sandwich SET title='#{self.title}', description='#{self.description}' WHERE id = #{self.id}"
+    #   else
+    #     # add
+    #     sql = "INSERT INTO sandwich (title, description) VALUES ('#{self.title}','#{self.description}')"
+    #   end
+    #
+    #
+    #   con.exec(sql)
+    #
+    # end
 
     # delete data entry
-    def self.destroy id
-      con = self.open_connection
-
-      sql = "DELETE FROM sandwich WHERE id = #{id}"
-
-      con.exec(sql)
-    end
+    # def self.destroy id
+    #   con = self.open_connection
+    #
+    #   sql = "DELETE FROM sandwich WHERE id = #{id}"
+    #
+    #   con.exec(sql)
+    # end
 
     def self.hydrate sandwich_data
       sandwich = Sandwich.new
