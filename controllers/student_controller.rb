@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
 class StudentController < Sinatra::Base
 
   configure :development do
@@ -15,7 +15,7 @@ class StudentController < Sinatra::Base
   get "/" do
 
     @students = Students.all
-    erb :"students/index"
+    erb :"register/index"
   end
 
   # Show
@@ -39,6 +39,6 @@ class StudentController < Sinatra::Base
   end
 
 end
-=======
+# =======
 # zac harrison
->>>>>>> master
+# >>>>>>> master

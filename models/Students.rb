@@ -3,13 +3,13 @@ class Students
   attr_accessor :StudentID, :FirstName, :LastName
 
   def self.open_connection
-    con = PG.connect(dbname: "attendence_tracker")
+     con = PG.connect(dbname: "attendence_tracker")
   end
 
   def self.all
     con = self.open_connection
 
-    sql = "SELECT * FROM register ORDER BY StudentID"
+    sql = "SELECT * FROM Students;"
 
     results = con.exec(sql)
 
@@ -26,7 +26,7 @@ class Students
 
       result = con.exec(sql)
 
-      sandwich = self.hydrate result[0]
+      student = self.hydrate result[0]
     end
 
     # save + update data entry
@@ -35,10 +35,10 @@ class Students
     #
     #   if (self.StudentID)
     #     # update
-    #     sql = "UPDATE sandwich SET title='#{self.title}', description='#{self.description}' WHERE id = #{self.id}"
+    #     sql = "UPDATE students SET title='#{self.title}', description='#{self.description}' WHERE id = #{self.id}"
     #   else
     #     # add
-    #     sql = "INSERT INTO sandwich (title, description) VALUES ('#{self.title}','#{self.description}')"
+    #     sql = "INSERT INTO students (title, description) VALUES ('#{self.title}','#{self.description}')"
     #   end
     #
     #
@@ -50,18 +50,18 @@ class Students
     # def self.destroy id
     #   con = self.open_connection
     #
-    #   sql = "DELETE FROM sandwich WHERE id = #{id}"
+    #   sql = "DELETE FROM students WHERE id = #{id}"
     #
     #   con.exec(sql)
     # end
 
-    def self.hydrate sandwich_data
-      sandwich = Sandwich.new
+    def self.hydrate student_data
+      student = Students.new
 
-      sandwich.id = sandwich_data['id']
-      sandwich.title = sandwich_data['title']
-      sandwich.description = sandwich_data['description']
-      sandwich
+      student.StudentID = student_data['StudentID']
+      student.FirstName = student_data['FirstName']
+      student.LastName = student_data['LastName']
+      student
     end
 
   end
