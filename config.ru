@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
 require "pg"
+require "faker"
 require_relative "models/Attendence.rb"
 require_relative "models/Students.rb"
 require_relative "controllers/attendence_controller.rb"
