@@ -1,4 +1,5 @@
 class Student
+require "faker"
 
   attr_accessor :studentid, :firstname, :lastname
 
@@ -8,7 +9,10 @@ class Student
 
   def self.all
     con = self.open_connection
-
+    # for n in (1..10) do
+    #   "INSERT INTO students (firstname, lastname) VALUES ('Student_FN','Student_LN');"
+    #   return n = n + 1;
+    # end ;
     sql = "SELECT * FROM students"
 
     results = con.exec(sql)
