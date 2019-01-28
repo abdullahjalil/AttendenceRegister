@@ -33,14 +33,6 @@ class StudentController < Sinatra::Base
     end
 
     print session[:students]
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> ddff610dd68bc82b48c97828b31d2a7a27420267
-=======
->>>>>>> master
     erb :"register/show"
   end
 
