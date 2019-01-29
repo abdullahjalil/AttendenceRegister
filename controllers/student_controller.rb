@@ -70,6 +70,7 @@ class StudentController < Sinatra::Base
     attendence.studentid = params[:studentid]
     attendence.comments = params[:comments]
 
+
     attendence.save
 
     redirect "/#{id}"
@@ -107,6 +108,16 @@ class StudentController < Sinatra::Base
     Student.destroy id
 
     redirect "/"
+  end
+
+  # Delete
+  delete "/attendence/:id" do
+    id = params[:id].to_i
+    studentid = params[:studentid].to_i
+
+    Attendence.destroy id
+
+    redirect "/#{studentid}"
   end
 
 end
