@@ -57,6 +57,10 @@ require "faker"
     def self.destroy id
       con = self.open_connection
 
+      sql1 = "DELETE FROM attendence WHERE studentid = #{id}"
+
+      con.exec(sql1)
+
       sql = "DELETE FROM students WHERE studentid = #{id}"
 
       con.exec(sql)
