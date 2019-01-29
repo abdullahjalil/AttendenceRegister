@@ -28,6 +28,7 @@ class StudentController < Sinatra::Base
     id = params[:id].to_i
 
     @students = Student.find id
+    # @attendence = Attendence.find id
 
     if(!session[:students])
       session[:students] = []
@@ -46,6 +47,41 @@ class StudentController < Sinatra::Base
     id = params[:id].to_i
     @Student = Student.find id
     erb :"register/student_edit"
+  end
+
+  # Create
+  post "/" do
+    student = Student.new
+
+    student.firstname = params[:firstname]
+    student.lastname = params[:lastname]
+
+    student.save
+
+    redirect "/"
+  end
+
+  # Update
+  put "/:id" do
+    id = params[:id].to_i
+
+    student = Student.find id
+
+    student.firstname = params[:firstname]
+    student.lastname = params[:lastname]
+
+    student.save
+
+    redirect "/#{id}"
+  end
+
+  # Delete
+  delete "/:id" do
+    id = params[:id].to_i
+
+    Student.destroy id
+
+    redirect "/"
   end
 
 end
