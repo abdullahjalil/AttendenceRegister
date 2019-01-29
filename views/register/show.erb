@@ -1,23 +1,19 @@
-<h1>Show</h1>
+<h1><%= @students.firstname %> <%= @students.lastname %></h1>
 
 <table>
   <tr>
-    <th>Student ID</th>
-    <th>First Name</th>
-    <th>Last Name</th>
     <th>Status</th>
     <th>Date</th>
     <th>Comments</th>
   </tr>
   <% attendence = Attendence.find @students.studentid  %>
+  <% attendence.each do |attend| %>
     <tr>
-      <td><a href="/<%= @students.studentid %>"><%= @students.studentid %></a></td>
-      <td><a href="/<%= @students.studentid %>"><%= @students.firstname %></a></td>
-      <td><a href="/<%= @students.studentid %>"><%= @students.lastname %></a></td>
-      <td><a href="/<%= @students.studentid %>"><%= attendence.status %></a></td>
-      <td><a href="/<%= @students.studentid %>"><%= attendence.date %></a></td>
-      <td><a href="/<%= @students.studentid %>"><%= attendence.comments %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
     </tr>
+  <% end %>
 </table>
 
 <form class="" action="/<%= @students.studentid %>" method="post">

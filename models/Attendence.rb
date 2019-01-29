@@ -24,9 +24,11 @@ class Attendence
 
     sql = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
-    result = con.exec(sql)
+    results = con.exec(sql)
 
-    student = self.hydrate result[0]
+    student = results.map do |student_data|
+      self.hydrate student_data
+    end
   end
 
     # save + update data entry
