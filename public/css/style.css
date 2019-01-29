@@ -1,8 +1,6 @@
-img {
-  height: 100px !important;
-  width: 100px !important;
-}
 
-body {
-  background-color: red;  
+.logo {
+  height: 400px;
+  width: 200px;
+
 }
