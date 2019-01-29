@@ -1,10 +1,26 @@
-<h1>Show</h1>
+<h1><%= @students.firstname %> <%= @students.lastname %></h1>
 
-<h2>ID: <%= @students.studentid %></h2>
-<h2>First Name: <%= @students.firstname %></h2>
-<h2>Last Name: <%= @students.lastname %></h2>
+<button type="button" name="button">
+  <a href="/<%= @students.studentid %>/edit">Edit Student</a>
+</button>
 
 <form class="" action="/<%= @students.studentid %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Student">
 </form>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Comments</th>
+  </tr>
+  <% attendence = Attendence.find @students.studentid  %>
+  <% attendence.each do |attend| %>
+    <tr>
+      <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
+    </tr>
+  <% end %>
+</table>
