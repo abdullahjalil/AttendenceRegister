@@ -9,30 +9,32 @@
   <input type="submit" value="Delete Student">
 </form>
 
-<table>
-  <tr>
-    <th>Status</th>
-    <th>Date</th>
-    <th>Comments</th>
-  </tr>
-  <% attendence = Attendence.find @students.studentid  %>
-  <% attendence.each do |attend| %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% attendence = Attendence.find @students.studentid  %>
+    <% attendence.each do |attend| %>
     <tr>
       <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
     </tr>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>
 
-
 <form class="" action="/<%= @students.studentid %>" method="post">
-
   <label for="">Date:</label>
   <input type="text" name="date" placeholder="Todays date">
   <label for="">Status:</label>
   <input type="text" name="status" placeholder="">
-  <label for="">Comments:</label>
+  <label for="">Comments:<  /label>
   <input type="text" name="comments" placeholder="">
 
   <input type="hidden" name="studentid" value="<%= @students.studentid %>">
