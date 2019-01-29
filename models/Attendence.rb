@@ -31,6 +31,14 @@ class Attendence
     end
   end
 
+  # save + update data entry
+    def save
+      connection = Attendence.open_connection
+
+      sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}');"
+
+      connection.exec(sql)
+    end
     # save + update data entry
     # def self.save
     #   con = Students.open_connection

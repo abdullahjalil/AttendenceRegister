@@ -49,6 +49,20 @@ class StudentController < Sinatra::Base
     erb :"register/student_edit"
   end
 
+  # Create attendence
+  post "/:id" do
+    id = params[:id].to_i
+    attendence = Attendence.new
+
+    attendence.date = params[:date]
+    attendence.status = params[:status]
+    attendence.studentid = params[:studentid]
+    attendence.comments = params[:comments]
+
+    attendence.save
+
+    redirect "/#{id}"
+  end
   # Create
   post "/" do
     student = Student.new

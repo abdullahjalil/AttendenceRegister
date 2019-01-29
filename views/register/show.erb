@@ -17,6 +17,19 @@
 </table>
 
 <form class="" action="/<%= @students.studentid %>" method="post">
+
+  <label for="">Date:</label>
+  <input type="text" name="date" placeholder="Todays date">
+  <label for="">Status:</label>
+  <input type="text" name="status" placeholder="">
+  <label for="">Comments:</label>
+  <input type="text" name="comments" placeholder="">
+
+  <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+  <input type="submit" name="" value="Update Table">
+</form>
+
+<form class="" action="/<%= @students.studentid %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Student">
 </form>
