@@ -9,7 +9,7 @@ class Attendence
   def self.all
     con = self.open_connection
 
-    sql = "SELECT * FROM attendence"
+    sql = "SELECT * FROM attendence ORDER BY dateofattendence"
 
     results = con.exec(sql)
 
@@ -22,7 +22,7 @@ class Attendence
   def self.find studentID
     con = self.open_connection
 
-    sql = "SELECT * FROM attendence WHERE studentid=#{studentID}"
+    sql = "SELECT * FROM attendence WHERE studentid=#{studentID} ORDER BY dateofattendence"
 
     results = con.exec(sql)
 
@@ -35,7 +35,7 @@ class Attendence
     def save
       connection = Attendence.open_connection
 
-      sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}');"
+      sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}') ;"
 
       connection.exec(sql)
     end
