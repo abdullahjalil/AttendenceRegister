@@ -1,5 +1,14 @@
 <h1><%= @students.firstname %> <%= @students.lastname %></h1>
 
+<button type="button" name="button">
+  <a href="/<%= @students.studentid %>/edit">Edit Student</a>
+</button>
+
+<form class="" action="/<%= @students.studentid %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Student">
+</form>
+
 <table>
   <tr>
     <th>Status</th>
@@ -15,8 +24,3 @@
     </tr>
   <% end %>
 </table>
-
-<form class="" action="/<%= @students.studentid %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Student">
-</form>
