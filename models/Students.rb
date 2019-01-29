@@ -28,7 +28,7 @@ require "faker"
 
     # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
 
-    sql = "SELECT * FROM students WHERE studentid=#{studentID}"
+    sql = "SELECT studentid, firstname, lastname FROM students WHERE studentid=#{studentID}"
     # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
     result = con.exec(sql)
@@ -37,7 +37,7 @@ require "faker"
   end
 
     # save + update data entry
-    def self.save
+    def save
       con = Student.open_connection
 
       if (self.studentid)
@@ -45,7 +45,7 @@ require "faker"
         sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}' WHERE studentid = #{self.studentid}"
       else
         # add
-        sql = "INSERT INTO students (firstname, firstname) VALUES ('#{self.firstname}','#{self.lastname}')"
+        sql = "INSERT INTO students (firstname, lastname) VALUES ('#{self.firstname}','#{self.lastname}')"
       end
     #
     #
@@ -56,7 +56,7 @@ require "faker"
     # delete data entry
     def self.destroy id
       con = self.open_connection
-    
+
       sql = "DELETE FROM students WHERE studentid = #{id}"
 
       con.exec(sql)

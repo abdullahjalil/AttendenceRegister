@@ -70,7 +70,7 @@ class StudentController < Sinatra::Base
     student.lastname = params[:lastname]
 
     student.save
-
+    
     redirect "/#{id}"
   end
 
