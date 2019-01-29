@@ -27,8 +27,8 @@ class StudentController < Sinatra::Base
   get "/generate_names" do
     @students = Student.all
     @students.each do |student|
-      student.firstname = Faker::Name.first_name
-      student.lastname = Faker::Name.last_name
+      student.firstname = Faker::Name.first_name.gsub(/\W/, ' ')
+      student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
       student.save
     end
     redirect "/"
@@ -70,17 +70,18 @@ class StudentController < Sinatra::Base
     attendence.studentid = params[:studentid]
     attendence.comments = params[:comments]
 
+
     attendence.save
 
     redirect "/#{id}"
   end
+
   # Create
   post "/" do
     student = Student.new
 
-    student.firstname = params[:firstname]
-    student.lastname = params[:lastname]
-
+    student.firstname = params[:firstname].gsub(/\W/, ' ')
+    student.lastname = params[:lastname].gsub(/\W/, ' ')
     student.save
 
     redirect "/"
@@ -92,8 +93,8 @@ class StudentController < Sinatra::Base
 
     student = Student.find id
 
-    student.firstname = params[:firstname]
-    student.lastname = params[:lastname]
+    student.firstname = params[:firstname].gsub(/\W/, ' ')
+    student.lastname = params[:lastname].gsub(/\W/, ' ')
 
     student.save
 
@@ -107,6 +108,16 @@ class StudentController < Sinatra::Base
     Student.destroy id
 
     redirect "/"
+  end
+
+  # Delete
+  delete "/attendence/:id" do
+    id = params[:id].to_i
+    studentid = params[:studentid].to_i
+
+    Attendence.destroy id
+
+    redirect "/#{studentid}"
   end
 
 end
