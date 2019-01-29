@@ -19,3 +19,8 @@
       <td><a href="/<%= @students.studentid %>"><%= attendence.comments %></a></td>
     </tr>
 </table>
+
+<form class="" action="/<%= @students.studentid %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Student">
+</form>
