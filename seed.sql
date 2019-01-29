@@ -9,6 +9,7 @@ CREATE TABLE students (
 );
 
 CREATE TABLE attendence (
+  attendenceid SERIAL PRIMARY KEY,
   studentid INT,
   FOREIGN KEY(studentid) REFERENCES students(studentid),
   dateofattendence DATE DEFAULT now(),
