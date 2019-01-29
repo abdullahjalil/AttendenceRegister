@@ -18,6 +18,11 @@ class StudentController < Sinatra::Base
     erb :"register/index"
   end
 
+  #new
+  get "/new" do
+    @Student = Student.new
+    erb :"register/student_add"
+  end
   # Show
   get "/:id" do
     id = params[:id].to_i
@@ -34,6 +39,13 @@ class StudentController < Sinatra::Base
 
     print session[:students]
     erb :"register/show"
+  end
+
+  #edit
+  get "/:id/edit" do
+    id = params[:id].to_i
+    @Student = Student.find id
+    erb :"register/student_edit"
   end
 
 end
