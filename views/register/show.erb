@@ -5,13 +5,17 @@
     <th>Student ID</th>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Comments</th>
   </tr>
-  <% @attendence.each do |attendence| %>
+  <% attendence = Attendence.find @students.studentid  %>
     <tr>
       <td><a href="/<%= @students.studentid %>"><%= @students.studentid %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= @students.firstname %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= @students.lastname %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attendence.status %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attendence.date %></a></td>
+      <td><a href="/<%= @students.studentid %>"><%= attendence.comments %></a></td>
     </tr>
-  <% end %>
 </table>

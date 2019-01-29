@@ -28,7 +28,7 @@ class StudentController < Sinatra::Base
     id = params[:id].to_i
 
     @students = Student.find id
-    @attendence = Attendence.find id
+    # @attendence = Attendence.find id
 
     if(!session[:students])
       session[:students] = []
