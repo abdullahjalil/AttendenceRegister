@@ -1,8 +1,10 @@
-/* Style goes here */
 
 .logo {
-  height: 100px;
-  width: 100px;
+  height: 300px;
+  width: 500px;
+
 }
 
-/* style end */
+body {
+  background-color: gainsboro;
+}
