@@ -19,15 +19,15 @@ class Attendence
   end
 
 
-  # def self.find studentID
-  #   con = self.open_connection
-  #
-  #   sql = "SELECT * FROM attendence WHERE studentid=#{studentID}"
-  #
-  #   result = con.exec(sql)
-  #
-  #   student = self.hydrate result[0]
-  # end
+  def self.find studentID
+    con = self.open_connection
+
+    sql = "SELECT * FROM attendence WHERE studentid=#{studentID}"
+
+    result = con.exec(sql)
+
+    student = self.hydrate result[0]
+  end
 
     # save + update data entry
     # def self.save

@@ -15,7 +15,7 @@ class AttendenceController < Sinatra::Base
   get "/attendence" do
 
     @students = Student.all
-    erb :"register/index"
+    erb :"Attendence_register/index"
   end
 
   # Show
@@ -35,7 +35,7 @@ class AttendenceController < Sinatra::Base
     print session[:students]
 
 
-    erb :"students/show"
+    erb :"register/show"
   end
 
 end
