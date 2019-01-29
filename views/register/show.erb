@@ -3,3 +3,8 @@
 <h2>ID: <%= @students.studentid %></h2>
 <h2>First Name: <%= @students.firstname %></h2>
 <h2>Last Name: <%= @students.lastname %></h2>
+
+<form class="" action="/<%= @students.studentid %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Student">
+</form>
