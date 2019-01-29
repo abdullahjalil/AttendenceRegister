@@ -21,6 +21,11 @@
       <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
+      <td><form class="" action="/attendence/<%= attend.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+        <input type="submit" value="Delete Attendence">
+      </form></td>
     </tr>
   <% end %>
 </table>

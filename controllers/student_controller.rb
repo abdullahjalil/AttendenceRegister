@@ -60,6 +60,22 @@ class StudentController < Sinatra::Base
     erb :"register/student_edit"
   end
 
+  # Create attendence
+  post "/:id" do
+    id = params[:id].to_i
+    attendence = Attendence.new
+
+    attendence.date = params[:date]
+    attendence.status = params[:status]
+    attendence.studentid = params[:studentid]
+    attendence.comments = params[:comments]
+
+
+    attendence.save
+
+    redirect "/#{id}"
+  end
+
   # Create
   post "/" do
     student = Student.new
@@ -92,6 +108,16 @@ class StudentController < Sinatra::Base
     Student.destroy id
 
     redirect "/"
+  end
+
+  # Delete
+  delete "/attendence/:id" do
+    id = params[:id].to_i
+    studentid = params[:studentid].to_i
+
+    Attendence.destroy id
+
+    redirect "/#{studentid}"
   end
 
 end

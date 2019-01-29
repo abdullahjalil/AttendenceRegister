@@ -1,6 +1,6 @@
 class Attendence
 
-  attr_accessor :date, :status, :studentid, :comments
+  attr_accessor :id, :date, :status, :studentid, :comments
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -57,13 +57,13 @@ class Attendence
     # end
 
     # delete data entry
-    # def self.destroy id
-    #   con = self.open_connection
-    #
-    #   sql = "DELETE FROM students WHERE id = #{id}"
-    #
-    #   con.exec(sql)
-    # end
+    def self.destroy id
+      con = self.open_connection
+
+      sql = "DELETE FROM attendence WHERE attendenceid = #{id}"
+
+      con.exec(sql)
+    end
 
     def self.hydrate student_data
       studentAttend = Attendence.new
@@ -72,6 +72,7 @@ class Attendence
       studentAttend.status = student_data['status']
       studentAttend.studentid = student_data['studentid']
       studentAttend.comments = student_data['comment']
+      studentAttend.id = student_data['attendenceid']
       studentAttend
     end
 
