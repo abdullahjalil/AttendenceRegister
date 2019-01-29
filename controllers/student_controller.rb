@@ -23,6 +23,17 @@ class StudentController < Sinatra::Base
     @Student = Student.new
     erb :"register/student_add"
   end
+
+  get "/generate_names" do
+    @students = Student.all
+    @students.each do |student|
+      student.firstname = Faker::Name.first_name
+      student.lastname = Faker::Name.last_name
+      student.save
+    end
+    redirect "/"
+  end
+
   # Show
   get "/:id" do
     id = params[:id].to_i
