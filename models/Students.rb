@@ -37,30 +37,30 @@ require "faker"
   end
 
     # save + update data entry
-    # def self.save
-    #   con = Students.open_connection
+    def self.save
+      con = Student.open_connection
+
+      if (self.studentid)
+        # update
+        sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}' WHERE studentid = #{self.studentid}"
+      else
+        # add
+        sql = "INSERT INTO students (firstname, firstname) VALUES ('#{self.firstname}','#{self.lastname}')"
+      end
     #
-    #   if (self.StudentID)
-    #     # update
-    #     sql = "UPDATE students SET title='#{self.title}', description='#{self.description}' WHERE id = #{self.id}"
-    #   else
-    #     # add
-    #     sql = "INSERT INTO students (title, description) VALUES ('#{self.title}','#{self.description}')"
-    #   end
     #
+      con.exec(sql)
     #
-    #   con.exec(sql)
-    #
-    # end
+    end
 
     # delete data entry
-    # def self.destroy id
-    #   con = self.open_connection
-    #
-    #   sql = "DELETE FROM students WHERE id = #{id}"
-    #
-    #   con.exec(sql)
-    # end
+    def self.destroy id
+      con = self.open_connection
+    
+      sql = "DELETE FROM students WHERE studentid = #{id}"
+
+      con.exec(sql)
+    end
 
     def self.hydrate student_data
       student = Student.new
