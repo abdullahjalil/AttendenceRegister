@@ -1,14 +1,20 @@
 
 .logo {
-  height: 100px;
-  width: 150px;
+    width: 80px !important;
+    height: 50px !important;
+      border-radius: 20%;
+  }
 
+.card {
+  position: absolute;
+  left: 0px;
+  background-color: #e9ecef;
 }
 
 body {
   background-color: gainsboro;
+  font-family: "Khula", sans-serif;
 }
-
-.navHead {
-  color: black;
+th {
+  cursor: pointer;
 }
