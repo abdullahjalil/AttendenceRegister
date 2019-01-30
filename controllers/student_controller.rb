@@ -39,7 +39,7 @@ class StudentController < Sinatra::Base
   # Show students in group
   get "/:id" do
     id = params[:id].to_i
-
+    @groups = Group.find id
     @students = Student.group id
     # @attendence = Attendence.find id
 
