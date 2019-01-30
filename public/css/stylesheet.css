@@ -1,10 +1,14 @@
 
 .logo {
-  height: 200px;
-  width: 400px;
+  height: 100px;
+  width: 150px;
 
 }
 
 body {
   background-color: gainsboro;
+}
+
+.navHead {
+  color: black;
 }
