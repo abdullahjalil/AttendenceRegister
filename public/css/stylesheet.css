@@ -1,9 +1,9 @@
 
 .logo {
-  width: 80px !important;
-  height: 40px !important;
-  border-radius: 5%;
-}
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 5%;
+  } */
 
 #navbar {
   background-color: #000 !important;
@@ -16,7 +16,7 @@
 body {
   background-color: gainsboro;
 }
-
+/*
 .navHead {
   color: black;
-}
+} */
