@@ -27,7 +27,7 @@
       <td><form class="" action="/attendence/<%= attend.id %>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-        <input type="submit" value="Delete Attendence">
+        <input type="submit" value="Delete">
       </form></td>
     </tr>
     <% end %>
@@ -36,7 +36,7 @@
 
 <form class="" action="/<%= @students.studentid %>" method="post">
   <label for="">Date:</label>
-  <input type="text" name="date" placeholder="Todays date">
+  <input type="text" name="date" placeholder="Todays Date">
   <label for="">Status:</label>
   <input type="text" name="status" placeholder="">
   <label for="">Comments: </label>
