@@ -1,0 +1,18 @@
+<h1>Edit Attendence</h1>
+
+<form class="" action="/attendence/<%= @attendence.attendenceid %>" method="post">
+
+  <input type="hidden" name="_method" value="put">
+
+  <label for="">Date:</label>
+  <input type="date" name="date" value="<%= @attendence.date %>">
+  <label for="">Status:</label>
+  <input type="text" name="status" value="<%= @attendence.status %>">
+  <label for="">Comments: </label>
+  <input type="text" name="comments" value="<%= @attendence.comments %>">
+
+
+
+
+  <input type="submit" value="Update Table">
+</form>
