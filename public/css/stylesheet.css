@@ -8,3 +8,6 @@
 body {
   background-color: gainsboro;
 }
+th {
+  cursor: pointer;
+}

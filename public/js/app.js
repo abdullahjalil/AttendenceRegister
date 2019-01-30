@@ -6,13 +6,13 @@ function sortTable(n) {
   var x;
   var y;
   var shouldSwitch;
-  var dir;
+  var sortBy;
   var switchCount = 0;
 
   table = document.getElementById("myTable");
   switching = true;
-
-  dir = "asc";
+/*set the order to ascending */
+  sortBy = "asc";
 
   while (switching) {
 
@@ -26,13 +26,13 @@ function sortTable(n) {
       x = rows[i].getElementsByTagName("td")[n];
       y = rows[i + 1].getElementsByTagName("td")[n];
 
-      if (dir == "asc") {
+      if (sortBy == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 
           shouldSwitch= true;
           break;
         }
-      } else if (dir == "desc") {
+      } else if (sortBy == "desc") {
         if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
 
           shouldSwitch = true;
@@ -48,8 +48,9 @@ function sortTable(n) {
       switchCount ++;
     } else {
 
-      if (switchCount == 0 && dir == "asc") {
-        dir = "desc";
+/* if the order is not set to ascending th*/
+      if (switchCount == 0 && sortBy == "asc") {
+        sortBy = "desc";
         switching = true;
       }
     }
