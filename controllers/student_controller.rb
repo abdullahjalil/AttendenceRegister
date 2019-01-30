@@ -116,14 +116,4 @@ class StudentController < Sinatra::Base
     redirect "/"
   end
 
-  # Delete
-  delete "/attendence/:id" do
-    id = params[:id].to_i
-    studentid = params[:studentid].to_i
-
-    Attendence.destroy id
-
-    redirect "/students/#{studentid}"
-  end
-
 end

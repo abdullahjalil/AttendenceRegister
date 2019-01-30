@@ -10,4 +10,6 @@ require_relative "controllers/student_controller.rb"
 
 use Rack::MethodOverride
 
+
+use AttendenceController
 run StudentController
