@@ -19,26 +19,46 @@ class Attendence
   end
 
 
-  def self.find studentID
+  def self.find id, databasename
     con = self.open_connection
 
-    sql = "SELECT * FROM attendence WHERE studentid=#{studentID} ORDER BY dateofattendence"
+    if databasename === 'student'
+      sql = "SELECT * FROM attendence WHERE studentid=#{id} ORDER BY dateofattendence"
 
-    results = con.exec(sql)
+      results = con.exec(sql)
 
-    student = results.map do |student_data|
-      self.hydrate student_data
+      student = results.map do |student_data|
+        self.hydrate student_data
+      end
+
+    elsif databasename === 'attendence'
+      sql = "SELECT * FROM attendence WHERE attendenceid=#{id} ORDER BY dateofattendence"
+
+      results = con.exec(sql)
+
+      student = self.hydrate results[0]
     end
+
+
+
   end
 
   # save + update data entry
-    def save
-      connection = Attendence.open_connection
+  def save
+    connection = Attendence.open_connection
 
+
+
+    if (self.id)
+      # update
+      sql = "UPDATE attendence SET dateofattendence='#{self.date}', status='#{self.status}', comment='#{self.comments}' WHERE attendenceid = #{self.id}"
+    else
+      # add
       sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}') ;"
-
-      connection.exec(sql)
     end
+
+    connection.exec(sql)
+  end
     # save + update data entry
     # def self.save
     #   con = Students.open_connection
