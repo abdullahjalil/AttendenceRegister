@@ -77,7 +77,7 @@ class StudentController < Sinatra::Base
 
     attendence.save
 
-    redirect "/#{id}"
+    redirect "/students/#{id}"
   end
 
   # Create
@@ -123,7 +123,7 @@ class StudentController < Sinatra::Base
 
     Attendence.destroy id
 
-    redirect "/#{studentid}"
+    redirect "/students/#{studentid}"
   end
 
 end
