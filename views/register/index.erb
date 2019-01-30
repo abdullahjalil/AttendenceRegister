@@ -8,18 +8,17 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Student ID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
+        <th scope="col">Group ID</th>
+        <th scope="col">Group Name</th>
       </tr>
     </thead>
     <tbody>
-      <% @students.each do |student| %>
+      <% @groups.each do |group| %>
       <tr>
-        <td><a href="/<%= student.studentid %>"><%= student.studentid %></a></td>
-        <td><a href="/<%= student.studentid %>"><%= student.firstname %></a></td>
-        <td><a href="/<%= student.studentid %>"><%= student.lastname %></a></td>
+        <td><a href="/<%= group.groupid %>"><%= group.groupid %></a></td>
+        <td><a href="/<%= group.groupid %>"><%= group.groupname %></a></td>
       </tr>
       <% end %>
+
     </tbody>
   </table>

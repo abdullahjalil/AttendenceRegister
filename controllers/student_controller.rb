@@ -14,7 +14,8 @@ class StudentController < Sinatra::Base
   # Index
   get "/" do
 
-    @students = Student.all
+    # @students = Student.all
+    @groups = Group.all
     erb :"register/index"
   end
 
@@ -24,6 +25,7 @@ class StudentController < Sinatra::Base
     erb :"register/student_add"
   end
 
+  # Uses faker to generate names
   get "/generate_names" do
     @students = Student.all
     @students.each do |student|
@@ -34,29 +36,30 @@ class StudentController < Sinatra::Base
     redirect "/"
   end
 
-  # Show
+  # Show students in group
   get "/:id" do
     id = params[:id].to_i
 
-    @students = Student.find id
+    @students = Student.group id
     # @attendence = Attendence.find id
 
-    if(!session[:students])
-      session[:students] = []
-    end
-
-    if !session[:students].include? @students.studentid
-      session[:students].push @students.studentid
-    end
-
-    print session[:students]
     erb :"register/show"
   end
 
+  # Show students in group
+  get "/students/:studentid" do
+    studentid = params[:studentid].to_i
+
+    @students = Student.find studentid
+    # @attendence = Attendence.find id
+
+    erb :"register/showstudent"
+  end
+
   #edit
-  get "/:id/edit" do
-    id = params[:id].to_i
-    @Student = Student.find id
+  get "/students/:studentid/edit" do
+    studentid = params[:studentid].to_i
+    @Student = Student.find studentid
     erb :"register/student_edit"
   end
 
@@ -82,23 +85,25 @@ class StudentController < Sinatra::Base
 
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.groupid = params[:groupid]
     student.save
 
     redirect "/"
   end
 
   # Update
-  put "/:id" do
-    id = params[:id].to_i
+  put "/students/:studentid" do
+    studentid = params[:studentid].to_i
 
-    student = Student.find id
+    student = Student.find studentid
 
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.groupid = params[:groupid]
 
     student.save
 
-    redirect "/#{id}"
+    redirect "/students/#{studentid}"
   end
 
   # Delete
