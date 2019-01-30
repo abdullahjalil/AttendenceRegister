@@ -14,7 +14,7 @@
     <tbody>
       <% @groups.each do |group| %>
       <tr>
-        <td><a href="/  <%= group.groupid %>"><%= group.groupid %></a></td>
+        <td><a href="/<%= group.groupid %>"><%= group.groupid %></a></td>
         <td><a href="/<%= group.groupid %>"><%= group.groupname %></a></td>
       </tr>
       <% end %>
