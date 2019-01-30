@@ -34,7 +34,7 @@ class StudentController < Sinatra::Base
       student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
       student.save
     end
-    redirect "/#{@students.groupid}"
+    redirect "/"
   end
 
   # Show students in group
