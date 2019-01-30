@@ -5,16 +5,17 @@
     border-radius: 5%;
   } */
 
-#navbar {
+.navbar {
   background-color: #000 !important;
   position: fixed !important;
   padding-bottom: 5px !important;
-  width: 100% !important;
+  /* width: 100% !important; */
+  height: 100px !important;
   z-index: 1 !important;
 }
 
 body {
-  background-color: gainsboro;
+  background-color: red;
 }
 /*
 .navHead {
