@@ -1,9 +1,10 @@
 
 .logo {
-  height: 200px;
-  width: 400px;
+    width: 80px !important;
+    height: 50px !important;
+    border-radius: 5%;
+  }
 
-}
 
 body {
   background-color: gainsboro;
