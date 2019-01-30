@@ -1,6 +1,6 @@
 class Attendence
 
-  attr_accessor :id, :date, :status, :studentid, :comments
+  attr_accessor :attendenceid, :date, :status, :studentid, :comments
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -19,11 +19,11 @@ class Attendence
   end
 
 
-  def self.find id, databasename
+  def self.find attendenceid, databasename
     con = self.open_connection
 
     if databasename === 'student'
-      sql = "SELECT * FROM attendence WHERE studentid=#{id} ORDER BY dateofattendence"
+      sql = "SELECT * FROM attendence WHERE studentid=#{attendenceid} ORDER BY dateofattendence"
 
       results = con.exec(sql)
 
@@ -32,7 +32,7 @@ class Attendence
       end
 
     elsif databasename === 'attendence'
-      sql = "SELECT * FROM attendence WHERE attendenceid=#{id} ORDER BY dateofattendence"
+      sql = "SELECT * FROM attendence WHERE attendenceid=#{attendenceid} ORDER BY dateofattendence"
 
       results = con.exec(sql)
 
@@ -49,9 +49,9 @@ class Attendence
 
 
 
-    if (self.id)
+    if (self.attendenceid)
       # update
-      sql = "UPDATE attendence SET dateofattendence='#{self.date}', status='#{self.status}', comment='#{self.comments}' WHERE attendenceid = #{self.id}"
+      sql = "UPDATE attendence SET dateofattendence='#{self.date}', status='#{self.status}', comment='#{self.comments}' WHERE attendenceid = #{self.attendenceid}"
     else
       # add
       sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}') ;"
@@ -92,7 +92,7 @@ class Attendence
       studentAttend.status = student_data['status']
       studentAttend.studentid = student_data['studentid']
       studentAttend.comments = student_data['comment']
-      studentAttend.id = student_data['attendenceid']
+      studentAttend.attendenceid = student_data['attendenceid']
       studentAttend
     end
 

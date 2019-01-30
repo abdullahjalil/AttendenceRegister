@@ -25,10 +25,10 @@
       <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
       <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
       <td><button type="button" name="button">
-        <a href="/attendence/<%=attend.id%>/edit">Edit</a>
+        <a href="/attendence/<%=attend.attendenceid%>/edit">Edit</a>
       </button>
       </td>
-      <td><form class="" action="/attendence/<%= attend.id %>" method="post">
+      <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="studentid" value="<%= @students.studentid %>">
         <input type="submit" value="Delete Attendence">
