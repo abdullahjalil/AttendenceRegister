@@ -2,10 +2,15 @@
 .logo {
     width: 80px !important;
     height: 50px !important;
-    border-radius: 5%;
+      border-radius: 20%;
   }
 
 
 body {
   background-color: gainsboro;
+  font-family: "Khula", sans-serif;
 }
+/* 
+.all_students {
+display: flex;
+} */

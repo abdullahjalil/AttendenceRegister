@@ -1,13 +1,29 @@
 <h1><%= @students.firstname %> <%= @students.lastname %></h1>
 
-<button type="button" name="button">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="/images/person_placeholder.jpeg" alt="Card image cap">
+  <div class="card-body">
+    <h1 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h1>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+    <form class="btn btn-primary" action="/<%= @students.studentid %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Student">
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- <button type="button" name="button">
   <a href="/<%= @students.studentid %>/edit">Edit Student</a>
 </button>
 
 <form class="" action="/<%= @students.studentid %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Student">
-</form>
+</form> -->
 
 <table class="table">
   <thead class="thead-dark">
@@ -15,6 +31,7 @@
       <th scope="col">Status</th>
       <th scope="col">Date</th>
       <th scope="col">Comment</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -32,16 +49,23 @@
     </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <form class="" action="/<%= @students.studentid %>" method="post">
+        <td>
+          <input type="text" name="date" placeholder="Status">
+        </td>
+        <td>
+          <input type="text" name="status" placeholder="Date">
+        </td>
+        <td>
+        <input type="text" name="comments" placeholder="Comment">
+        </td>
+        <td>
+          <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+          <input type="submit" name="" value="Add New Attendence">
+        </td>
+      </form>
+    </tr>
+  </tfoot>
 </table>
-
-<form class="" action="/<%= @students.studentid %>" method="post">
-  <label for="">Date:</label>
-  <input type="text" name="date" placeholder="Todays Date">
-  <label for="">Status:</label>
-  <input type="text" name="status" placeholder="">
-  <label for="">Comments: </label>
-  <input type="text" name="comments" placeholder="">
-
-  <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-  <input type="submit" name="" value="Update Table">
-</form>
