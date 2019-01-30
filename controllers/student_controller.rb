@@ -119,7 +119,7 @@ class StudentController < Sinatra::Base
   get "/search/result" do
     parameter = params[:searchquery].downcase
     @searchresults = Search.search parameter
-    erb :"register/search_results"
+    erb :"search/search_results"
   end
 
 end

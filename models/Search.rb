@@ -1,5 +1,5 @@
 class Search
-  attr_accessor :studentid, :firstname, :lastname
+  attr_accessor :studentid, :firstname, :lastname, :groupid
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -12,7 +12,7 @@ class Search
     # else
       con = self.open_connection
 
-      sql = "SELECT * FROM students"
+      sql = "SELECT * FROM students WHERE firstname='#{parameter}'"
 
       results = con.exec(sql)
 
@@ -25,7 +25,11 @@ class Search
   def self.hydrate student_data
     search = Search.new
 
+    search.studentid = student_data['studentid']
     search.firstname = student_data['firstname']
+    search.lastname = student_data['lastname']
+    search.groupid = student_data['groupid']
+
     search
   end
 end
