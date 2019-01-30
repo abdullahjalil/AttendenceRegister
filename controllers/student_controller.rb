@@ -26,14 +26,15 @@ class StudentController < Sinatra::Base
   end
 
   # Uses faker to generate names
-  get "/generate_names" do
+  get "/students/generate_names" do
+    id = params[:id].to_i
     @students = Student.all
     @students.each do |student|
       student.firstname = Faker::Name.first_name.gsub(/\W/, ' ')
       student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
       student.save
     end
-    redirect "/"
+    redirect "/#{@students.groupid}"
   end
 
   # Show students in group
