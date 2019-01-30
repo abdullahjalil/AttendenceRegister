@@ -1,23 +1,11 @@
 
 .logo {
     width: 80px !important;
-    height: 80px !important;
+    height: 50px !important;
     border-radius: 5%;
-  } */
+  }
 
-.navbar {
-  background-color: #000 !important;
-  position: fixed !important;
-  padding-bottom: 5px !important;
-  /* width: 100% !important; */
-  height: 100px !important;
-  z-index: 1 !important;
-}
 
 body {
-  background-color: red;
+  background-color: gainsboro;
 }
-/*
-.navHead {
-  color: black;
-} */
