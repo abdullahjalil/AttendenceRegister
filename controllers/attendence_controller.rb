@@ -33,7 +33,7 @@ class AttendenceController < Sinatra::Base
     attendence.save
 
 
-    redirect "/#{attendence.studentid}"
+    redirect "/students/#{attendence.studentid}"
 
   end
 
@@ -44,6 +44,6 @@ class AttendenceController < Sinatra::Base
 
     Attendence.destroy id
 
-    redirect "/#{studentid}"
+    redirect "/students/#{studentid}"
   end
 end
