@@ -81,7 +81,7 @@ class StudentController < Sinatra::Base
   end
 
   # Create
-  post "/students" do
+  post "/students/" do
     student = Student.new
 
     student.firstname = params[:firstname].gsub(/\W/, ' ')
