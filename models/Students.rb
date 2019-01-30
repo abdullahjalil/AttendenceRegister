@@ -1,7 +1,7 @@
 class Student
 require "faker"
 
-  attr_accessor :studentid, :firstname, :lastname
+  attr_accessor :studentid, :firstname, :lastname, :groupid
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -28,7 +28,7 @@ require "faker"
 
     # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
 
-    sql = "SELECT studentid, firstname, lastname FROM students WHERE studentid=#{studentID}"
+    sql = "SELECT studentid, firstname, lastname, groupid FROM students WHERE studentid=#{studentID}"
     # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
     result = con.exec(sql)
@@ -42,10 +42,10 @@ require "faker"
 
       if (self.studentid)
         # update
-        sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}' WHERE studentid = #{self.studentid}"
+        sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}', groupid='#{self.groupid}' WHERE studentid = #{self.studentid}"
       else
         # add
-        sql = "INSERT INTO students (firstname, lastname) VALUES ('#{self.firstname}','#{self.lastname}')"
+        sql = "INSERT INTO students (firstname, lastname, groupid) VALUES ('#{self.firstname}','#{self.lastname}','#{self.groupid}')"
       end
     #
     #
@@ -72,7 +72,23 @@ require "faker"
       student.studentid = student_data['studentid']
       student.firstname = student_data['firstname']
       student.lastname = student_data['lastname']
+      student.groupid = student_data['groupid']
       student
+    end
+
+    def self.group id
+      con = self.open_connection
+
+      # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
+
+      sql = "SELECT * FROM students WHERE groupid=#{id}"
+      # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
+
+      results = con.exec(sql)
+
+      students = results.map do |student_data|
+        self.hydrate student_data
+      end
     end
 
   end
