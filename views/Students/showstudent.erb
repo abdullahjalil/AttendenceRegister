@@ -28,8 +28,8 @@
             <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
             <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
             <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
-            <td><button type="button" name="button"><a href="/attendence/<%=attend.id %>/edit">Edit</a></button></td>
-            <td><form class="" action="/attendence/<%= attend.id %>" method="post">
+            <td><button type="button" name="button"><a href="/attendence/<%=attend.attendenceid %>/edit">Edit</a></button></td>
+            <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
               <input type="hidden" name="_method" value="delete">
               <input type="hidden" name="studentid" value="<%= @students.studentid %>">
               <input type="submit" value="Delete">
@@ -41,10 +41,10 @@
           <tr>
             <form class="" action="/<%= @students.studentid %>" method="post">
               <td>
-                <input type="text" name="date" placeholder="Status">
+                <input type="text" name="status" placeholder="Status">
               </td>
               <td>
-                <input type="text" name="status" placeholder="Date">
+                <input type="date" name="date">
               </td>
               <td>
                 <input type="text" name="comments" placeholder="Comment">

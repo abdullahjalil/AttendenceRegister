@@ -15,13 +15,13 @@ class StudentController < Sinatra::Base
   get "/" do
 
     @groups = Group.all
-    erb :"register/index"
+    erb :"Groups/index"
   end
 
   #new
   get "/students/new" do
     @Student = Student.new
-    erb :"register/student_add"
+    erb :"Students/student_add"
   end
 
   # Uses faker to generate names
@@ -43,7 +43,7 @@ class StudentController < Sinatra::Base
     @students = Student.group id
     # @attendence = Attendence.find id
 
-    erb :"register/show"
+    erb :"Groups/show"
   end
 
   # Show students in group
@@ -53,14 +53,14 @@ class StudentController < Sinatra::Base
     @students = Student.find studentid
     # @attendence = Attendence.find id
 
-    erb :"register/showstudent"
+    erb :"Students/showstudent"
   end
 
   #edit
   get "/students/:studentid/edit" do
     studentid = params[:studentid].to_i
     @Student = Student.find studentid
-    erb :"register/student_edit"
+    erb :"Students/student_edit"
   end
 
   # Create attendence
