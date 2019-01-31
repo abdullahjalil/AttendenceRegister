@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
-      <div class="card" style="width: 16rem;">
-        <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
+    <div class="col-sm-3 col-centered">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/images/person_placeholder.jpeg" alt="Card image cap" width="50px" height="180px">
         <div class="card-body">
           <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9 col-centered">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -63,20 +63,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-<!-- <button type="button" name="button">
-  <a href="/<%= @students.studentid %>/edit">Edit Student</a>
-</button>
-
-<form class="" action="/<%= @students.studentid %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Student">
-</form> -->
