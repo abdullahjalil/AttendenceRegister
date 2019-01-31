@@ -12,13 +12,51 @@ class Search
     # else
       con = self.open_connection
 
-      parameterArray = parameter.gsub(/\s+/m, ' ').strip.split(" ")
+      name = false
+      numbers = false
 
-      sql = "SELECT * FROM students
-      WHERE
-      upper(firstname) LIKE upper('#{parameterArray[0]}%')
-      OR
-      upper(lastname) LIKE upper('#{parameter[1]}%');"
+      if parameter.tr("0-9", "").gsub(/\s+/m, '') != ''
+
+        parameterArray = parameter.tr("0-9", "").gsub(/\s+/m, ' ').strip.split(" ")
+
+        if parameterArray.count == 1
+            parameterArray[1] = 'false'
+        end
+
+        sqlLetters = "SELECT DISTINCT * FROM students
+        WHERE
+        upper(firstname) LIKE upper('#{parameterArray[0]}%')
+        OR
+        upper(lastname) LIKE upper('#{parameterArray[1]}%')"
+        name = true
+      end
+
+      if parameter.gsub(/\D/, '').gsub(/\s+/m, '') != ''
+        parameterNumber = parameter.gsub(/\D/, ' ').gsub(/\s+/m, ' ').strip.split(" ")
+
+        sqlNumbers = "SELECT * FROM students WHERE"
+
+        for i in 0...(parameterNumber.count) do
+          sqlNumbers += " studentid = #{parameterNumber[i]} OR"
+        end
+
+         sqlNumbers += " studentid = #{parameterNumber[parameterNumber.count-1]}"
+         numbers = true
+      end
+
+      if name && numbers
+        sql = sqlLetters + " UNION " + sqlNumbers
+
+      elsif name
+        sql = sqlLetters
+
+      elsif numbers
+        sql = sqlNumbers
+
+      else
+        sql = " "
+      end
+
 
       results = con.exec(sql)
 
