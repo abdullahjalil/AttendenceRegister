@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS groups;
 
 CREATE TABLE groups (
   groupid SERIAL PRIMARY KEY,
-  groupname CHAR(5)
+  groupname CHAR(5),
+  grouptype VARCHAR(11)
 );
 
 CREATE TABLE students (
@@ -12,6 +13,7 @@ CREATE TABLE students (
   firstname VARCHAR(40),
   lastname VARCHAR(40),
   groupid INT,
+  bio VARCHAR(255),
   FOREIGN KEY(groupid) REFERENCES groups(groupid)
 );
 
@@ -24,8 +26,8 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
-INSERT INTO groups (groupname) VALUES ('Eng23');
-INSERT INTO groups (groupname) VALUES ('Bus18');
+INSERT INTO groups (groupname, grouptype) VALUES ('Eng23', 'Engineering');
+INSERT INTO groups (groupname, grouptype) VALUES ('Bus18', 'Business');
 
 INSERT INTO students (firstname, lastname, groupid) VALUES ('Studen1t_FN','Student1_LN', 1);
 INSERT INTO students (firstname, lastname, groupid) VALUES ('Student2_FN','Student2_LN', 1);

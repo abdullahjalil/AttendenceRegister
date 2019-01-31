@@ -16,7 +16,7 @@ class AttendenceController < Sinatra::Base
     id = params[:id].to_i
 
     @attendence = Attendence.find id, 'attendence'
-    erb :"register/attendence_edit"
+    erb :"Attendance/attendence_edit"
 
   end
 
@@ -26,7 +26,7 @@ class AttendenceController < Sinatra::Base
     attendence = Attendence.find id, 'attendence'
 
     attendence.date = params[:date]
-    attendence.status = params[:status].gsub(/\W/, ' ')
+    attendence.status = params[:status]
     attendence.comments = params[:comments].gsub(/\W/, ' ')
 
 

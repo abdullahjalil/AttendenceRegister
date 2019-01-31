@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-centered">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
+        <div class="card-body">
+          <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
+          <p class="card-text"><%= @students.bio %></p>
+          <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 col-centered">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Comment</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% attendence = Attendence.find @students.studentid, 'student'  %>
+          <% attendence.each do |attend| %>
+          <tr>
+            <td><%= attend.status %></td>
+            <td><%= attend.date %></td>
+            <td><%= attend.comments %></td>
+            <td><button type="button" name="button"><a href="/attendence/<%=attend.attendenceid %>/edit">Edit</a></button></td>
+            <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+              <input type="submit" value="Delete">
+            </form></td>
+          </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <form class="" action="/<%= @students.studentid %>" method="post">
+              <td>
+                <select name="status">
+                  <option value="On Time">On Time</option>
+                  <option value=">5 Min Late"> >5 Min Late </option>
+                  <option value="<5 Min Late">  <5 Min Late </option>
+                  <option value="Authorised Absence"> Authorised Absence</option>
+                  <option value="Unauthorised Absence"> Unauthorised Absence</option>
+                </select>
+              </td>
+              <td>
+                <input type="date" name="date" value="<%= Date.today %>">
+              </td>
+              <td>
+                <input type="text" name="comments" placeholder="Comment">
+              </td>
+              <td>
+                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+                <input type="submit" name="" value="Add New Attendence">
+              </td>
+            </form>
+            <form class="btn btn-primary" action="/<%= @students.studentid %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete Student">
+            </form>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

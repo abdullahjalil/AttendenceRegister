@@ -2,13 +2,28 @@
 .logo {
     width: 80px !important;
     height: 50px !important;
-    border-radius: 5%;
+    border-radius: 20%;
   }
 
+/* .card {
+  position: absolute;
+  left: 0px;
+  background-color: #e9ecef;
+} */
 
 body {
   background-color: gainsboro;
+  font-family: "Khula", sans-serif;
 }
 th {
   cursor: pointer;
+}
+
+/* .col-centered{
+    float: none;
+    margin: 0 auto;
+} */
+
+.container_show {
+  padding-right: 10%;
 }

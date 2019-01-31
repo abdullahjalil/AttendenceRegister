@@ -1,4 +1,17 @@
-<h1>Welcome Home</h1>
+
+<div class="jumbotron">
+  <h1 class="display-4"><%= @groups.groupname%></h1>
+  <p class="lead">This is a simple attendance tracking application.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <form class="" action="/students/generate_names" method="get">
+      <input type="hidden" name="groupid" value="<%= @groups.groupid %>">
+
+      <input type="submit" class="btn btn-primary btn-lg" role="button" value="Fill Names">
+    </form>
+  </p>
+</div>
 
   <table id="myTable" class="table">
     <thead class="thead-dark">

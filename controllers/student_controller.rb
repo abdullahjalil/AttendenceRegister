@@ -14,37 +14,39 @@ class StudentController < Sinatra::Base
   # Index
   get "/" do
 
-    # @students = Student.all
     @groups = Group.all
-    erb :"register/index"
+    erb :"Groups/index"
   end
 
   #new
   get "/students/new" do
     @Student = Student.new
-    erb :"register/student_add"
+    erb :"Students/student_add"
   end
 
   # Uses faker to generate names
   get "/students/generate_names" do
-    id = params[:id].to_i
     @students = Student.all
     @students.each do |student|
       student.firstname = Faker::Name.first_name.gsub(/\W/, ' ')
       student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
       student.save
     end
-    redirect "/"
+    groupid = params[:groupid].to_i
+
+    redirect "/#{groupid}"
   end
 
   # Show students in group
   get "/:id" do
     id = params[:id].to_i
-
+    @groups = Group.find id
     @students = Student.group id
+    @groups = Group.find id
     # @attendence = Attendence.find id
 
-    erb :"register/show"
+
+    erb :"Groups/show"
   end
 
   # Show students in group
@@ -54,14 +56,14 @@ class StudentController < Sinatra::Base
     @students = Student.find studentid
     # @attendence = Attendence.find id
 
-    erb :"register/showstudent"
+    erb :"Students/showstudent"
   end
 
   #edit
   get "/students/:studentid/edit" do
     studentid = params[:studentid].to_i
     @Student = Student.find studentid
-    erb :"register/student_edit"
+    erb :"Students/student_edit"
   end
 
   # Create attendence
@@ -70,7 +72,7 @@ class StudentController < Sinatra::Base
     attendence = Attendence.new
 
     attendence.date = params[:date]
-    attendence.status = params[:status].gsub(/\W/, ' ')
+    attendence.status = params[:status]
     attendence.studentid = params[:studentid]
     attendence.comments = params[:comments].gsub(/\W/, ' ')
 
@@ -101,6 +103,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
     student.groupid = params[:groupid]
+    student.bio = params[:bio].gsub(/\W/, ' ')
 
     student.save
 
@@ -114,6 +117,13 @@ class StudentController < Sinatra::Base
     Student.destroy id
 
     redirect "/"
+  end
+
+  # Search
+  get "/search/result" do
+    parameter = params[:searchquery]
+    @searchresults = Search.search parameter
+    erb :"search/search_results"
   end
 
 end
