@@ -31,18 +31,6 @@ class StudentController < Sinatra::Base
   end
 
   # Show students in group
-  get "/:id" do
-    id = params[:id].to_i
-    @groups = Group.find id
-    @students = Student.group id
-    @groups = Group.find id
-    # @attendence = Attendence.find id
-
-
-    erb :"Groups/show"
-  end
-
-  # Show students in group
   get "/students/:studentid" do
     studentid = params[:studentid].to_i
 
@@ -53,6 +41,14 @@ class StudentController < Sinatra::Base
     @more5Count = Attendence.findAverage studentid, '>5 Min Late'
     @authorisedCount = Attendence.findAverage studentid, 'Authorised Absence'
     @unAuthorisedCount = Attendence.findAverage studentid, 'Unauthorised Absence'
+
+    if @onTimeCount.nan?
+      @onTimeCount = 0.0
+      @less5Count = 0.0
+      @more5Count = 0.0
+      @authorisedCount = 0.0
+      @unAuthorisedCount = 0.0
+    end
 
     # @attendence = Attendence.find id
 

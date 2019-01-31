@@ -1,6 +1,6 @@
 class Group
 
-  attr_accessor :groupid, :groupname
+  attr_accessor :groupid, :groupname, :grouptype
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -62,6 +62,7 @@ class Group
 
     group.groupid = group_data['groupid']
     group.groupname = group_data['groupname']
+    group.grouptype = group_data['grouptype']
     group
   end
 
