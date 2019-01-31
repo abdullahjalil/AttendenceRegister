@@ -12,21 +12,13 @@ class Search
     # else
       con = self.open_connection
 
-<<<<<<< HEAD
+
       sql = "SELECT * FROM students
       WHERE
       upper(firstname) LIKE upper('#{parameter}%')
       OR
       upper(lastname) LIKE upper('#{parameter}%');"
-=======
-      parameterArray = parameter.gsub(/\s+/m, ' ').strip.split(" ")
 
-      sql = "SELECT * FROM students
-      WHERE
-      upper(firstname) LIKE upper('#{parameterArray[0]}%')
-      OR
-      upper(lastname) LIKE upper('#{parameter[1]}%');"
->>>>>>> master
 
       results = con.exec(sql)
 
