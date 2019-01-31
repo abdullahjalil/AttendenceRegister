@@ -37,7 +37,7 @@ INSERT INTO students (firstname, lastname, groupid) VALUES ('Student5_FN','Stude
 
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 1, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 2, 'On Time', '');
-INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 3, 'Authorised Absense', 'Was Ill');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 3, 'Authorised Absence', 'Was Ill');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 4, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 5, '<5 Min Late', 'Bus Was Late');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/29', 1, 'On Time', '');
@@ -51,12 +51,12 @@ INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/30', 4, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/30', 5, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 1, 'On Time', '');
-INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 2, 'Authorised Absense', 'Doctor appointment');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 2, 'Authorised Absence', 'Doctor appointment');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 3, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 4, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/31', 5, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 1, 'On Time', '');
-INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 2, 'UnAuthoised Absense', 'Kingdom Hearts Release?');
+INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 2, 'Unauthorised Absence', 'Kingdom Hearts Release?');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 3, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 4, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/02/01', 5, 'On Time', '');

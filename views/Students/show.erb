@@ -1,4 +1,10 @@
-<div id="myTable" class="container container_show table-responsive">
+<h3>On Time = <%= @onTimeCount %>%</h3>
+<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
+<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
+<h3>>5 Min Late = <%= @less5Count %>%</h3>
+<h3><5 Min Late = <%= @more5Count %>%</h3>
+
+<div id="myTable" class="container container_show">
   <div class="row justify-content-md-center align-items-center">
     <div class="col-4 affix profile">
       <div class="card" style="width: 18rem;">

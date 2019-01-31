@@ -11,17 +11,10 @@ class StudentController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
-  # Index
-  get "/" do
-
-    @groups = Group.all
-    erb :"Groups/index"
-  end
-
   #new
   get "/students/new" do
     @Student = Student.new
-    erb :"Students/student_add"
+    erb :"Students/add"
   end
 
   # Uses faker to generate names
@@ -54,32 +47,23 @@ class StudentController < Sinatra::Base
     studentid = params[:studentid].to_i
 
     @students = Student.find studentid
+
+    @onTimeCount = Attendence.findAverage studentid, "On Time"
+    @less5Count = Attendence.findAverage studentid, '<5 Min Late'
+    @more5Count = Attendence.findAverage studentid, '>5 Min Late'
+    @authorisedCount = Attendence.findAverage studentid, 'Authorised Absence'
+    @unAuthorisedCount = Attendence.findAverage studentid, 'Unauthorised Absence'
+
     # @attendence = Attendence.find id
 
-    erb :"Students/showstudent"
+    erb :"Students/show"
   end
 
   #edit
   get "/students/:studentid/edit" do
     studentid = params[:studentid].to_i
     @Student = Student.find studentid
-    erb :"Students/student_edit"
-  end
-
-  # Create attendence
-  post "/:id" do
-    id = params[:id].to_i
-    attendence = Attendence.new
-
-    attendence.date = params[:date]
-    attendence.status = params[:status]
-    attendence.studentid = params[:studentid]
-    attendence.comments = params[:comments].gsub(/\W/, ' ')
-
-
-    attendence.save
-
-    redirect "/students/#{id}"
+    erb :"Students/edit"
   end
 
   # Create
