@@ -19,11 +19,15 @@ th {
   cursor: pointer;
 }
 
-/* .col-centered{
-    float: none;
-    margin: 0 auto;
-} */
-
 .container_show {
-  padding-right: 10%;
+  padding-left: 0px !important;
+  padding-right: 10px !important; 
+}
+
+.profile {
+  margin-left: 0px !important;
+}
+
+#myTable {
+  background-color: #e9ecef;
 }
