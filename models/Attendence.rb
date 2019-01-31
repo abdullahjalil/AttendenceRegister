@@ -47,8 +47,6 @@ class Attendence
   def save
     connection = Attendence.open_connection
 
-
-
     if (self.attendenceid)
       # update
       sql = "UPDATE attendence SET dateofattendence='#{self.date}', status='#{self.status}', comment='#{self.comments}' WHERE attendenceid = #{self.attendenceid}"

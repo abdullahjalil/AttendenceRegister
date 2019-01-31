@@ -29,4 +29,17 @@ class GroupController < Sinatra::Base
     erb :"Groups/show"
   end
 
+  # Create Group
+  post "/" do
+    group = Group.new
+
+    group.groupid = params[:groupid]
+    group.groupname = params[:groupname].gsub(/\W/, ' ')
+    group.grouptype = params[:grouptype]
+
+    group.save
+
+    redirect "/"
+  end
+
 end
