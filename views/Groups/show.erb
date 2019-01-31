@@ -5,7 +5,11 @@
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/students/generate_names" role="button">Fill Names</a>
+    <form class="" action="/students/generate_names" method="get">
+      <input type="hidden" name="groupid" value="<%= @groups.groupid %>">
+
+      <input type="submit" class="btn btn-primary btn-lg" role="button" value="Fill Names">
+    </form>
   </p>
 </div>
 
