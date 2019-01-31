@@ -16,7 +16,7 @@ class AttendenceController < Sinatra::Base
     id = params[:id].to_i
 
     @attendence = Attendence.find id, 'attendence'
-    erb :"register/attendence_edit"
+    erb :"Attendance/attendence_edit"
 
   end
 
