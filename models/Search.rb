@@ -12,7 +12,7 @@ class Search
     # else
       con = self.open_connection
 
-      sql = "SELECT * FROM students WHERE firstname LIKE '#{parameter}%' OR lastname LIKE '#{parameter}%'"
+      sql = "SELECT * FROM students WHERE upper(firstname) LIKE upper('#{parameter}%') OR upper(lastname) LIKE upper('#{parameter}%')"
 
       results = con.exec(sql)
 
