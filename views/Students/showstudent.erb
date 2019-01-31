@@ -53,6 +53,8 @@
                   <option value="Authorised Absence"> Authorised Absence</option>
                   <option value="Unauthorised Absence"> Unauthorised Absence</option>
                 </select>
+                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+                <input type="submit" name="" value="Add New Attendence">
               </td>
               <td>
                 <input type="date" name="date" value="<%= Date.today %>">
@@ -61,8 +63,6 @@
                 <input type="text" name="comments" placeholder="Comment">
               </td>
               <td>
-                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-                <input type="submit" name="" value="Add New Attendence">
               </td>
             </form>
           </tr>
