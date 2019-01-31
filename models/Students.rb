@@ -1,7 +1,7 @@
 class Student
 require "faker"
 
-  attr_accessor :studentid, :firstname, :lastname, :groupid
+  attr_accessor :studentid, :firstname, :lastname, :groupid, :image
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -42,7 +42,7 @@ require "faker"
 
       if (self.studentid)
         # update
-        sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}', groupid='#{self.groupid}' WHERE studentid = #{self.studentid}"
+        sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}', groupid='#{self.groupid}', image='#{self.image}' WHERE studentid = #{self.studentid}"
       else
         # add
         sql = "INSERT INTO students (firstname, lastname, groupid) VALUES ('#{self.firstname}','#{self.lastname}','#{self.groupid}')"
@@ -73,6 +73,7 @@ require "faker"
       student.firstname = student_data['firstname']
       student.lastname = student_data['lastname']
       student.groupid = student_data['groupid']
+      student.image = student_data['image']
       student
     end
 

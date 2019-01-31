@@ -86,6 +86,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
     student.groupid = params[:groupid]
+    student.image = params[:image]
     student.save
 
     redirect "/"
@@ -100,6 +101,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
     student.groupid = params[:groupid]
+    student.image = params[:image]
 
     student.save
 

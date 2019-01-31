@@ -13,7 +13,8 @@ CREATE TABLE students (
   firstname VARCHAR(40),
   lastname VARCHAR(40),
   groupid INT,
-  FOREIGN KEY(groupid) REFERENCES groups(groupid)
+  FOREIGN KEY(groupid) REFERENCES groups(groupid),
+  image bytea
 );
 
 CREATE TABLE attendence (
