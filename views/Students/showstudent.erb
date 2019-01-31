@@ -1,3 +1,9 @@
+<h3>On Time = <%= @onTimeCount %>%</h3>
+<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
+<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
+<h3>>5 Min Late = <%= @less5Count %>%</h3>
+<h3><5 Min Late = <%= @more5Count %>%</h3>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
@@ -10,6 +16,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-sm-9">
       <table class="table">
         <thead class="thead-dark">
