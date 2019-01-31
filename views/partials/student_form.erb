@@ -23,6 +23,12 @@
     <input type="text" name="groupid" value="<%= @Student.groupid %>" placeholder="Group ID">
   </div>
 
+  <div class="form-group">
+    <label> Student Bio: </label>
+    <!-- Will fetch the Bio if one is available -->
+    <input type="text" name="bio" value="<%= @Student.bio %>" placeholder="Student Bio" maxlength="255">
+  </div>
+
   <!-- Button will change depending on whether you're adding/editing student info -->
   <% if !@Student.studentid %>
     <div class="form-group">

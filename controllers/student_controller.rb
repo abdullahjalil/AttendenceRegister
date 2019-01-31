@@ -72,7 +72,7 @@ class StudentController < Sinatra::Base
     attendence = Attendence.new
 
     attendence.date = params[:date]
-    attendence.status = params[:status].gsub(/\W/, ' ')
+    attendence.status = params[:status]
     attendence.studentid = params[:studentid]
     attendence.comments = params[:comments].gsub(/\W/, ' ')
 
@@ -103,6 +103,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, ' ')
     student.lastname = params[:lastname].gsub(/\W/, ' ')
     student.groupid = params[:groupid]
+    student.bio = params[:bio].gsub(/\W/, ' ')
 
     student.save
 
