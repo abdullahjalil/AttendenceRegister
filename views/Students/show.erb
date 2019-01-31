@@ -1,0 +1,105 @@
+<div id="myTable" class="">
+  <div class="row justify-content-center align-items-start">
+    <div class="col-sm-3 profile">
+      <div class="card" style="width: 17rem;">
+        <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
+        <div class="card-body">
+          <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
+          <p class="card-text"><%= @students.bio %></p>
+        </div>
+        <div class="row justify-content-around">
+          <form class="btn left" action="" method="">
+            <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+          </form>
+          <form class="btn right" action="/<%= @students.studentid %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Student" class="btn btn-primary" >
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-9 ">
+      <table class="table table-fixed table-wrapper-scroll-y">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Comment</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% attendence = Attendence.find @students.studentid, 'student'  %>
+          <% attendence.each do |attend| %>
+          <tr>
+            <td><%= attend.status %></td>
+            <td><%= attend.date %></td>
+            <td><%= attend.comments %></td>
+            <td><button type="button" name="button"><a href="/attendence/<%=attend.attendenceid %>/edit">Edit</a></button></td>
+            <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+              <input type="submit" value="Delete">
+            </form></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <tfoot>
+        <tr>
+          <form class="" action="/<%= @students.studentid %>" method="post">
+            <td>
+              <select name="status">
+                <option value="On Time">On Time</option>
+                <option value=">5 Min Late"> >5 Min Late </option>
+                <option value="<5 Min Late">  <5 Min Late </option>
+                <option value="Authorised Absence"> Authorised Absence</option>
+                <option value="Unauthorised Absence"> Unauthorised Absence</option>
+              </select>
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+            </td>
+            <td>
+              <input type="date" name="date" value="<%= Date.today %>">
+            </td>
+            <td>
+              <input type="text" name="comments" placeholder="Comment" maxlength="255">
+            </td>
+            <td>
+              <input type="submit" name="" value="Add New Attendence">
+            </td>
+          </form>
+        </tr>
+      </tfoot>
+    </div>
+  </div>
+  <div >
+  <br>
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead id="averageTable">
+          <tr>
+            <th scope="col">On Time</th>
+            <th scope="col">Authorised Absence</th>
+            <th scope="col">Unauthorised Absence</th>
+            <th scope="col"> >5 Min Late</th>
+            <th scope="col"> <5 Min Late</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td ><%= @onTimeCount %>%</td>
+              <td ><%= @authorisedCount %>%</td>
+              <td ><%= @unAuthorisedCount %>%</td>
+              <td ><%= @less5Count %>%</td>
+              <td ><%= @more5Count %>%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
