@@ -1,6 +1,6 @@
-<div id="myTable" class="container container_show">
+<div id="myTable" class="container container_show table-responsive">
   <div class="row justify-content-md-center align-items-center">
-    <div class="col-sm-4 affix profile">
+    <div class="col-4 affix profile">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
         <div class="card-body">
@@ -15,13 +15,14 @@
       </form>
     </div>
 
-    <div class="col-sm-8 ">
+    <div class="col-8 ">
       <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Status</th>
             <th scope="col">Date</th>
             <th scope="col">Comment</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -52,6 +53,8 @@
                   <option value="Authorised Absence"> Authorised Absence</option>
                   <option value="Unauthorised Absence"> Unauthorised Absence</option>
                 </select>
+                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+                <input type="submit" name="" value="Add New Attendence">
               </td>
               <td>
                 <input type="date" name="date" value="<%= Date.today %>">
@@ -60,8 +63,6 @@
                 <input type="text" name="comments" placeholder="Comment" maxlength="255">
               </td>
               <td>
-                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-                <input type="submit" name="" value="Add New Attendence">
               </td>
             </form>
           </tr>
