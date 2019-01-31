@@ -7,9 +7,15 @@
   <label for="">Date:</label>
   <input type="date" name="date" value="<%= @attendence.date %>">
   <label for="">Status:</label>
-  <input type="text" name="status" value="<%= @attendence.status %>">
+  <select name="status">
+    <option value="On Time">On Time</option>
+    <option value=">5 Min Late"> >5 Min Late </option>
+    <option value="<5 Min Late">  <5 Min Late </option>
+    <option value="Authorised Absence"> Authorised Absence</option>
+    <option value="Unauthorised Absence"> Unauthorised Absence</option>
+  </select>
   <label for="">Comments: </label>
-  <input type="text" name="comments" value="<%= @attendence.comments %>">
+  <input type="text" name="comments" value="<%= @attendence.comments %>" maxlength="255">
 
 
 

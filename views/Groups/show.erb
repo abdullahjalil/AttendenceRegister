@@ -1,6 +1,6 @@
 
 <div class="jumbotron">
-  <h1 class="display-4">Welcome Home!</h1>
+  <h1 class="display-4"><%= @groups.groupname%></h1>
   <p class="lead">This is a simple attendance tracking application.</p>
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
@@ -16,9 +16,9 @@
   <table id="myTable" class="table">
     <thead class="thead-dark">
       <tr>
-        <th onclick="sortTable(0)" scope="col">Student ID</th>
-        <th onclick="sortTable(1)" scope="col">First Name</th>
-        <th onclick="sortTable(2)" scope="col">Last Name</th>
+        <th scope="col">Student ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
         <th scope="col">Group ID</th>
       </tr>
     </thead>
