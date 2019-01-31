@@ -35,9 +35,8 @@ class AttendenceController < Sinatra::Base
 
     allAttendances.each do |attendance|
       if attendance.date == attendence.date && attendance.studentid == attendence.studentid
-        @message = "Invalid Input: Attendance for that date already exists."
+        @message = true
         redirect "/students/#{id}"
-
       end
     end
 
