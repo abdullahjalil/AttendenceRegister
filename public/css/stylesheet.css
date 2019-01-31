@@ -19,7 +19,11 @@ th {
   cursor: pointer;
 }
 
-.col-centered{
+/* .col-centered{
     float: none;
     margin: 0 auto;
+} */
+
+.container_show {
+  padding-right: 10%;
 }
