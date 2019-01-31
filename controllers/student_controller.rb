@@ -11,93 +11,95 @@ class StudentController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
-  # Index
-  get "/" do
-
-    @students = Student.all
-    erb :"register/index"
-  end
-
   #new
-  get "/new" do
+  get "/students/new" do
     @Student = Student.new
-    erb :"register/student_add"
+    erb :"Students/add"
   end
 
-  get "/generate_names" do
+  # Uses faker to generate names
+  get "/students/generate_names" do
     @students = Student.all
     @students.each do |student|
-      student.firstname = Faker::Name.first_name
-      student.lastname = Faker::Name.last_name
+      student.firstname = Faker::Name.first_name.gsub(/\W/, ' ')
+      student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
       student.save
     end
-    redirect "/"
+    groupid = params[:groupid].to_i
+
+    redirect "/#{groupid}"
   end
 
-  # Show
+  # Show students in group
   get "/:id" do
     id = params[:id].to_i
-
-    @students = Student.find id
+    @groups = Group.find id
+    @students = Student.group id
+    @groups = Group.find id
     # @attendence = Attendence.find id
 
-    if(!session[:students])
-      session[:students] = []
+
+    erb :"Groups/show"
+  end
+
+  # Show students in group
+  get "/students/:studentid" do
+    studentid = params[:studentid].to_i
+
+    @students = Student.find studentid
+
+    @onTimeCount = Attendence.findAverage studentid, "On Time"
+    @less5Count = Attendence.findAverage studentid, '<5 Min Late'
+    @more5Count = Attendence.findAverage studentid, '>5 Min Late'
+    @authorisedCount = Attendence.findAverage studentid, 'Authorised Absence'
+    @unAuthorisedCount = Attendence.findAverage studentid, 'Unauthorised Absence'
+
+    if @onTimeCount.nan?
+      @onTimeCount = 0.0
+      @less5Count = 0.0
+      @more5Count = 0.0
+      @authorisedCount = 0.0
+      @unAuthorisedCount = 0.0
     end
 
-    if !session[:students].include? @students.studentid
-      session[:students].push @students.studentid
-    end
+    # @attendence = Attendence.find id
 
-    print session[:students]
-    erb :"register/show"
+    erb :"Students/show"
   end
 
   #edit
-  get "/:id/edit" do
-    id = params[:id].to_i
-    @Student = Student.find id
-    erb :"register/student_edit"
+  get "/students/:studentid/edit" do
+    studentid = params[:studentid].to_i
+    @Student = Student.find studentid
+    erb :"Students/edit"
   end
 
-  # Create attendence
-  post "/:id" do
-    id = params[:id].to_i
-    attendence = Attendence.new
-
-    attendence.date = params[:date]
-    attendence.status = params[:status]
-    attendence.studentid = params[:studentid]
-    attendence.comments = params[:comments]
-
-    attendence.save
-
-    redirect "/#{id}"
-  end
   # Create
-  post "/" do
+  post "/students/" do
     student = Student.new
 
-    student.firstname = params[:firstname]
-    student.lastname = params[:lastname]
-
+    student.firstname = params[:firstname].gsub(/\W/, ' ')
+    student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.groupid = params[:groupid]
     student.save
 
     redirect "/"
   end
 
   # Update
-  put "/:id" do
-    id = params[:id].to_i
+  put "/students/:studentid" do
+    studentid = params[:studentid].to_i
 
-    student = Student.find id
+    student = Student.find studentid
 
-    student.firstname = params[:firstname]
-    student.lastname = params[:lastname]
+    student.firstname = params[:firstname].gsub(/\W/, ' ')
+    student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.groupid = params[:groupid]
+    student.bio = params[:bio].gsub(/\W/, ' ')
 
     student.save
 
-    redirect "/#{id}"
+    redirect "/students/#{studentid}"
   end
 
   # Delete
@@ -107,6 +109,13 @@ class StudentController < Sinatra::Base
     Student.destroy id
 
     redirect "/"
+  end
+
+  # Search
+  get "/search/result" do
+    parameter = params[:searchquery]
+    @searchresults = Search.search parameter
+    erb :"search/search_results"
   end
 
 end

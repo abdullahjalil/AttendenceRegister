@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <h1 class="display-4">Sparta Register!</h1>
+  <p class="lead">This is a simple attendance tracking application.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+</div>
+
+  <table id="myTable"class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Group ID</th>
+        <th scope="col">Group Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+      <tr>
+        <td><a href="/<%= group.groupid %>"><%= group.groupid %></a></td>
+        <td><a href="/<%= group.groupid %>"><%= group.groupname %></a></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>

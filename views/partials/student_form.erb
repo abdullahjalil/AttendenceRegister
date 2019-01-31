@@ -1,5 +1,4 @@
-<form class="" action="/<%= @Student.studentid %>" method="post">
-<form class="" action="/" method="post">
+<form class="" action="/students/<%= @Student.studentid %>" method="post">
 
   <!-- Changes from post to put if no id is present(whether entering a new student or not) -->
   <% if @Student.studentid %>
@@ -9,13 +8,25 @@
   <div class="form-group">
     <label>First Name: </label>
     <!-- Will fetch the first name if one is available -->
-    <input type="text" name="firstname" value="<%= @Student.firstname %>" placeholder="First Name">
+    <input type="text" name="firstname" value="<%= @Student.firstname %>" placeholder="First Name" maxlength="40">
   </div>
 
   <div class="form-group">
     <label>Last Name: </label>
     <!-- Will fetch the last name if one is available -->
-    <input type="text" name="lastname" value="<%= @Student.lastname %>" placeholder="Last Name">
+    <input type="text" name="lastname" value="<%= @Student.lastname %>" placeholder="Last Name" maxlength="40">
+  </div>
+
+  <div class="form-group">
+    <label>Group ID: </label>
+    <!-- Will fetch the last name if one is available -->
+    <input type="text" name="groupid" value="<%= @Student.groupid %>" placeholder="Group ID" maxlength="10">
+  </div>
+
+  <div class="form-group">
+    <label> Student Bio: </label>
+    <!-- Will fetch the Bio if one is available -->
+    <input type="text" name="bio" value="<%= @Student.bio %>" placeholder="Student Bio" maxlength="255">
   </div>
 
   <!-- Button will change depending on whether you're adding/editing student info -->
