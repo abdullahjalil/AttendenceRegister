@@ -31,18 +31,6 @@ class StudentController < Sinatra::Base
   end
 
   # Show students in group
-  get "/:id" do
-    id = params[:id].to_i
-    @groups = Group.find id
-    @students = Student.group id
-    @groups = Group.find id
-    # @attendence = Attendence.find id
-
-
-    erb :"Groups/show"
-  end
-
-  # Show students in group
   get "/students/:studentid" do
     studentid = params[:studentid].to_i
 
