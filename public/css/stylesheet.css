@@ -12,14 +12,18 @@
 } */
 
 body {
-  background-color: gainsboro;
+  background-color: red;
   font-family: "Khula", sans-serif;
 }
 th {
   cursor: pointer;
 }
 
-.col-centered{
+/* .col-centered{
     float: none;
     margin: 0 auto;
+} */
+
+.container_show {
+  padding-right: 10%;
 }
