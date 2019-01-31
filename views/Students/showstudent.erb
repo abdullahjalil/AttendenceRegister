@@ -21,8 +21,8 @@
 
     </div>
 
-    <div class="col-sm-9 table-wrapper-scroll-y">
-      <table class="table">
+    <div class="col-sm-9 ">
+      <table class="table table-fixed table-wrapper-scroll-y">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Status</th>
@@ -48,39 +48,59 @@
           </tr>
           <% end %>
         </tbody>
-        <tfoot>
-          <tr>
-            <form class="" action="/<%= @students.studentid %>" method="post">
-              <td>
-                <select name="status">
-                  <option value="On Time">On Time</option>
-                  <option value=">5 Min Late"> >5 Min Late </option>
-                  <option value="<5 Min Late">  <5 Min Late </option>
-                  <option value="Authorised Absence"> Authorised Absence</option>
-                  <option value="Unauthorised Absence"> Unauthorised Absence</option>
-                </select>
-                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-                <input type="submit" name="" value="Add New Attendence">
-              </td>
-              <td>
-                <input type="date" name="date" value="<%= Date.today %>">
-              </td>
-              <td>
-                <input type="text" name="comments" placeholder="Comment" maxlength="255">
-              </td>
-              <td>
-              </td>
-            </form>
-          </tr>
-        </tfoot>
       </table>
+      <tfoot>
+        <tr>
+          <form class="" action="/<%= @students.studentid %>" method="post">
+            <td>
+              <select name="status">
+                <option value="On Time">On Time</option>
+                <option value=">5 Min Late"> >5 Min Late </option>
+                <option value="<5 Min Late">  <5 Min Late </option>
+                <option value="Authorised Absence"> Authorised Absence</option>
+                <option value="Unauthorised Absence"> Unauthorised Absence</option>
+              </select>
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+            </td>
+            <td>
+              <input type="date" name="date" value="<%= Date.today %>">
+            </td>
+            <td>
+              <input type="text" name="comments" placeholder="Comment" maxlength="255">
+            </td>
+            <td>
+              <input type="submit" name="" value="Add New Attendence">
+            </td>
+          </form>
+        </tr>
+      </tfoot>
+    </div>
+  </div>
+  <div >
+  <br>
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead id="averageTable">
+          <tr>
+            <th scope="col">On Time</th>
+            <th scope="col">Authorised Absence</th>
+            <th scope="col">Unauthorised Absence</th>
+            <th scope="col"> >5 Min Late</th>
+            <th scope="col"> <5 Min Late</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td ><%= @onTimeCount %>%</td>
+              <td ><%= @authorisedCount %>%</td>
+              <td ><%= @unAuthorisedCount %>%</td>
+              <td ><%= @less5Count %>%</td>
+              <td ><%= @more5Count %>%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-
-
-<h3>On Time = <%= @onTimeCount %>%</h3>
-<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
-<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
-<h3>>5 Min Late = <%= @less5Count %>%</h3>
-<h3><5 Min Late = <%= @more5Count %>%</h3>

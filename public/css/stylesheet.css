@@ -13,8 +13,23 @@ th {
   cursor: pointer;
 }
 
+thead {
+  display: fixed;
+}
+.table-wrapper-scroll-y {
+display: block;
+max-height: 350px;
+overflow-y: auto;
+-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 #myTable {
   background-color: #e9ecef;
+}
+
+#averageTable {
+  background-color: #343a40!important;
+  color: white;
 }
 
 #navbar {
