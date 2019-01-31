@@ -118,12 +118,4 @@ class StudentController < Sinatra::Base
 
     redirect "/"
   end
-
-  # Search
-  get "/search/result" do
-    parameter = params[:searchquery]
-    @searchresults = Search.search parameter
-    erb :"search/search_results"
-  end
-
 end
