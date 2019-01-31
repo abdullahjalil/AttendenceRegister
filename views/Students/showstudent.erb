@@ -40,7 +40,17 @@
           <tr>
             <form class="" action="/<%= @students.studentid %>" method="post">
               <td>
+<<<<<<< HEAD
                 <input type="text" name="date" placeholder="Status">
+=======
+                <select name="status">
+                  <option value="On Time">On Time</option>
+                  <option value=">5 Min Late"> >5 Min Late </option>
+                  <option value="<5 Min Late">  <5 Min Late </option>
+                  <option value="Authorised Absence"> Authorised Absence</option>
+                  <option value="Unauthorised Absence"> Unauthorised Absence</option>
+                </select>
+>>>>>>> status_dropdown
               </td>
               <td>
                 <input type="date" name="date" value="<%= Date.today %>">
