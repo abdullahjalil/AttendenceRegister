@@ -1,6 +1,6 @@
 class Attendence
 
-  attr_accessor :attendenceid, :date, :status, :studentid, :comments
+  attr_accessor :attendenceid, :date, :status, :studentid, :comments, :count
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -94,6 +94,32 @@ class Attendence
       studentAttend.comments = student_data['comment']
       studentAttend.attendenceid = student_data['attendenceid']
       studentAttend
+    end
+
+    def self.findAverage id, status
+      con = self.open_connection
+
+      sql1 = "SELECT count(*) AS \"count\" FROM attendence a INNER JOIN students s ON a.studentid = s.studentid where s.studentid = #{id} AND a.status = '#{status}'"
+      sql2 = "select count(a.status) from attendence a inner join students s on a.studentid = s.studentid where s.studentid = #{id}"
+
+      result1 = con.exec(sql1)[0]["count"].to_f
+      result2 = con.exec(sql2)[0]["count"].to_f
+      result3 = (result1 / result2) * 100
+      # return result1[0]
+
+      # result2 = con.exec(sql2)
+
+      # count1 = self.hydrate result1[0]
+      # count1["count"]
+      # print "Hello"
+      # "Count is #{count1}"
+      # count1.keys
+      # count1["count"]
+      # count2 = self.hydrate result2[0]
+
+      # result = (count1 / count2)*100
+
+
     end
 
   end

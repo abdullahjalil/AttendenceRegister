@@ -1,16 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3 col-centered">
+<h3>On Time = <%= @onTimeCount %>%</h3>
+<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
+<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
+<h3>>5 Min Late = <%= @less5Count %>%</h3>
+<h3><5 Min Late = <%= @more5Count %>%</h3>
+
+<div id="myTable" class="container container_show">
+  <div class="row justify-content-md-center align-items-center">
+    <div class="col-sm-4 affix profile">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
         <div class="card-body">
           <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
           <p class="card-text"><%= @students.bio %></p>
-          <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
         </div>
+        <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
       </div>
+      <form class="btn" action="/<%= @students.studentid %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Student" class="btn btn-primary" >
+      </form>
     </div>
-    <div class="col-sm-9 col-centered">
+
+    <div class="col-sm-8 ">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -52,16 +63,12 @@
                 <input type="date" name="date" value="<%= Date.today %>">
               </td>
               <td>
-                <input type="text" name="comments" placeholder="Comment">
+                <input type="text" name="comments" placeholder="Comment" maxlength="255">
               </td>
               <td>
                 <input type="hidden" name="studentid" value="<%= @students.studentid %>">
                 <input type="submit" name="" value="Add New Attendence">
               </td>
-            </form>
-            <form class="btn btn-primary" action="/<%= @students.studentid %>" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Student">
             </form>
           </tr>
         </tfoot>
