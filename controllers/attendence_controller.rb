@@ -16,8 +16,35 @@ class AttendenceController < Sinatra::Base
     id = params[:id].to_i
 
     @attendence = Attendence.find id, 'attendence'
-    erb :"Attendance/attendence_edit"
+    erb :"Attendance/edit"
 
+  end
+
+  # Create attendence
+  post "/:id" do
+    id = params[:id].to_i
+    attendence = Attendence.new
+
+    attendence.date = params[:date]
+    attendence.status = params[:status]
+    attendence.studentid = params[:studentid]
+    attendence.comments = params[:comments].gsub(/\W/, '')
+
+
+    allAttendances = Attendence.all
+
+    allAttendances.each do |attendance|
+      if attendance.date == attendence.date && attendance.studentid == attendence.studentid
+        @message = true
+        redirect "/students/#{id}"
+      end
+    end
+
+    attendence.save
+
+    @message = "Attendance Added"
+
+    redirect "/students/#{id}"
   end
 
   put "/attendence/:id" do
@@ -27,7 +54,8 @@ class AttendenceController < Sinatra::Base
 
     attendence.date = params[:date]
     attendence.status = params[:status]
-    attendence.comments = params[:comments].gsub(/\W/, ' ')
+    attendence.comments = params[:comments].gsub(/\W/, '')
+
 
 
     attendence.save

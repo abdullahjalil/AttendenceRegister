@@ -1,6 +1,6 @@
 class Group
 
-  attr_accessor :groupid, :groupname
+  attr_accessor :groupid, :groupname, :grouptype
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -36,7 +36,7 @@ class Group
       sql = "UPDATE groups SET groupname='#{self.groupname}' WHERE groupid = #{self.groupid}"
     else
       # add
-      sql = "INSERT INTO groups (groupname) VALUES ('#{self.groupname}')"
+      sql = "INSERT INTO groups (groupname, grouptype) VALUES ('#{self.groupname}', '#{self.grouptype}')"
     end
     #
     #
@@ -62,6 +62,7 @@ class Group
 
     group.groupid = group_data['groupid']
     group.groupname = group_data['groupname']
+    group.grouptype = group_data['grouptype']
     group
   end
 
