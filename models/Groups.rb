@@ -36,7 +36,7 @@ class Group
       sql = "UPDATE groups SET groupname='#{self.groupname}' WHERE groupid = #{self.groupid}"
     else
       # add
-      sql = "INSERT INTO groups (groupname) VALUES ('#{self.groupname}')"
+      sql = "INSERT INTO groups (groupname, grouptype) VALUES ('#{self.groupname}', '#{self.grouptype}')"
     end
     #
     #
