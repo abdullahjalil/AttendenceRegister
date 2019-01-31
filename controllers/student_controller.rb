@@ -11,13 +11,6 @@ class StudentController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
-  # Index
-  get "/" do
-
-    @groups = Group.all
-    erb :"Groups/index"
-  end
-
   #new
   get "/students/new" do
     @Student = Student.new
@@ -35,18 +28,6 @@ class StudentController < Sinatra::Base
     groupid = params[:groupid].to_i
 
     redirect "/#{groupid}"
-  end
-
-  # Show students in group
-  get "/:id" do
-    id = params[:id].to_i
-
-    @students = Student.group id
-    @groups = Group.find id
-    # @attendence = Attendence.find id
-
-
-    erb :"Groups/show"
   end
 
   # Show students in group
