@@ -24,9 +24,9 @@
           <% attendence = Attendence.find @students.studentid, 'student'  %>
           <% attendence.each do |attend| %>
           <tr>
-            <td><a href="/<%= @students.studentid %>"><%= attend.status %></a></td>
-            <td><a href="/<%= @students.studentid %>"><%= attend.date %></a></td>
-            <td><a href="/<%= @students.studentid %>"><%= attend.comments %></a></td>
+            <td><%= attend.status %></td>
+            <td><%= attend.date %></td>
+            <td><%= attend.comments %></td>
             <td><button type="button" name="button"><a href="/attendence/<%=attend.attendenceid %>/edit">Edit</a></button></td>
             <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
               <input type="hidden" name="_method" value="delete">
