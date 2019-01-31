@@ -5,23 +5,24 @@
     <input type="hidden" name="_method" value="put">
   <% end %>
 
+  <form>
   <div class="form-group">
     <label>First Name: </label>
     <!-- Will fetch the first name if one is available -->
     <input type="text" name="firstname" value="<%= @Student.firstname %>" placeholder="First Name">
   </div>
-
   <div class="form-group">
     <label>Last Name: </label>
     <!-- Will fetch the last name if one is available -->
     <input type="text" name="lastname" value="<%= @Student.lastname %>" placeholder="Last Name">
   </div>
-
   <div class="form-group">
     <label>Group ID: </label>
     <!-- Will fetch the last name if one is available -->
     <input type="text" name="groupid" value="<%= @Student.groupid %>" placeholder="Group ID">
   </div>
+</form>
+
 
   <div class="form-group">
     <label> Student Bio: </label>
@@ -32,11 +33,12 @@
   <!-- Button will change depending on whether you're adding/editing student info -->
   <% if !@Student.studentid %>
     <div class="form-group">
-      <input type="submit" value="Add Student">
+      <input type="submit" value="Add Student" class="btn-primary">
     </div>
   <% else %>
     <div class="form-group">
-      <input type="submit" value="Save Changes">
+      <input type="submit" value="Save Changes" class="btn-primary">
     </div>
   <% end %>
+
 </form>
