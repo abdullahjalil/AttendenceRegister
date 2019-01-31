@@ -1,33 +1,34 @@
-<h3>On Time = <%= @onTimeCount %>%</h3>
-<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
-<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
-<h3>>5 Min Late = <%= @less5Count %>%</h3>
-<h3><5 Min Late = <%= @more5Count %>%</h3>
 
-<div id="myTable" class="container container_show">
-  <div class="row justify-content-md-center align-items-center">
-    <div class="col-sm-4 affix profile">
-      <div class="card" style="width: 18rem;">
+<div id="myTable" class="">
+  <div class="row justify-content-center align-items-start">
+    <div class="col-sm-3 profile">
+      <div class="card" style="width: 17rem;">
         <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
         <div class="card-body">
           <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
           <p class="card-text"><%= @students.bio %></p>
         </div>
-        <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+        <div class="row justify-content-around">
+          <form class="btn left" action="" method="">
+            <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+          </form>
+          <form class="btn right" action="/<%= @students.studentid %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Student" class="btn btn-primary" >
+          </form>
+        </div>
       </div>
-      <form class="btn" action="/<%= @students.studentid %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete Student" class="btn btn-primary" >
-      </form>
+
     </div>
 
-    <div class="col-sm-8 ">
+    <div class="col-sm-9 table-wrapper-scroll-y">
       <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Status</th>
             <th scope="col">Date</th>
             <th scope="col">Comment</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -58,6 +59,8 @@
                   <option value="Authorised Absence"> Authorised Absence</option>
                   <option value="Unauthorised Absence"> Unauthorised Absence</option>
                 </select>
+                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+                <input type="submit" name="" value="Add New Attendence">
               </td>
               <td>
                 <input type="date" name="date" value="<%= Date.today %>">
@@ -66,8 +69,6 @@
                 <input type="text" name="comments" placeholder="Comment" maxlength="255">
               </td>
               <td>
-                <input type="hidden" name="studentid" value="<%= @students.studentid %>">
-                <input type="submit" name="" value="Add New Attendence">
               </td>
             </form>
           </tr>
@@ -76,3 +77,10 @@
     </div>
   </div>
 </div>
+
+
+<h3>On Time = <%= @onTimeCount %>%</h3>
+<h3>Authorised Absence = <%= @authorisedCount %>%</h3>
+<h3>Unauthorised Absence = <%= @unAuthorisedCount %>%</h3>
+<h3>>5 Min Late = <%= @less5Count %>%</h3>
+<h3><5 Min Late = <%= @more5Count %>%</h3>

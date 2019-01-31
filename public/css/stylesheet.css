@@ -3,8 +3,7 @@
     width: 80px !important;
     height: 50px !important;
     border-radius: 20%;
-  }
-
+}
 
 body {
   background-color: gainsboro;
@@ -12,17 +11,6 @@ body {
 }
 th {
   cursor: pointer;
-}
-
-.container_show {
-  padding-left: 0px !important;
-  padding-right: 10px !important;
-
-}
-
-.profile {
-  margin-left: 0px !important;
-
 }
 
 #myTable {
