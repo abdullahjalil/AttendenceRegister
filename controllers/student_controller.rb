@@ -54,6 +54,14 @@ class StudentController < Sinatra::Base
     @authorisedCount = Attendence.findAverage studentid, 'Authorised Absence'
     @unAuthorisedCount = Attendence.findAverage studentid, 'Unauthorised Absence'
 
+    if @onTimeCount.nan?
+      @onTimeCount = 0.0
+      @less5Count = 0.0
+      @more5Count = 0.0
+      @authorisedCount = 0.0
+      @unAuthorisedCount = 0.0
+    end
+
     # @attendence = Attendence.find id
 
     erb :"Students/show"
