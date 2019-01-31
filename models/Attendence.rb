@@ -1,6 +1,6 @@
 class Attendence
 
-  attr_accessor :id, :date, :status, :studentid, :comments
+  attr_accessor :attendenceid, :date, :status, :studentid, :comments
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -19,26 +19,46 @@ class Attendence
   end
 
 
-  def self.find studentID
+  def self.find attendenceid, databasename
     con = self.open_connection
 
-    sql = "SELECT * FROM attendence WHERE studentid=#{studentID} ORDER BY dateofattendence"
+    if databasename === 'student'
+      sql = "SELECT * FROM attendence WHERE studentid=#{attendenceid} ORDER BY dateofattendence"
 
-    results = con.exec(sql)
+      results = con.exec(sql)
 
-    student = results.map do |student_data|
-      self.hydrate student_data
+      student = results.map do |student_data|
+        self.hydrate student_data
+      end
+
+    elsif databasename === 'attendence'
+      sql = "SELECT * FROM attendence WHERE attendenceid=#{attendenceid} ORDER BY dateofattendence"
+
+      results = con.exec(sql)
+
+      student = self.hydrate results[0]
     end
+
+
+
   end
 
   # save + update data entry
-    def save
-      connection = Attendence.open_connection
+  def save
+    connection = Attendence.open_connection
 
+
+
+    if (self.attendenceid)
+      # update
+      sql = "UPDATE attendence SET dateofattendence='#{self.date}', status='#{self.status}', comment='#{self.comments}' WHERE attendenceid = #{self.attendenceid}"
+    else
+      # add
       sql = "INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('#{self.date}', '#{self.studentid}', '#{self.status}', '#{self.comments}') ;"
-
-      connection.exec(sql)
     end
+
+    connection.exec(sql)
+  end
     # save + update data entry
     # def self.save
     #   con = Students.open_connection
@@ -72,7 +92,7 @@ class Attendence
       studentAttend.status = student_data['status']
       studentAttend.studentid = student_data['studentid']
       studentAttend.comments = student_data['comment']
-      studentAttend.id = student_data['attendenceid']
+      studentAttend.attendenceid = student_data['attendenceid']
       studentAttend
     end
 

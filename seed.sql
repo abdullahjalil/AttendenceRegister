@@ -1,11 +1,19 @@
 DROP TABLE IF EXISTS attendence;
 DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS groups;
 
+CREATE TABLE groups (
+  groupid SERIAL PRIMARY KEY,
+  groupname CHAR(5),
+  grouptype VARCHAR(11)
+);
 
 CREATE TABLE students (
   studentid SERIAL PRIMARY KEY,
   firstname VARCHAR(40),
-  lastname VARCHAR(40)
+  lastname VARCHAR(40),
+  groupid INT,
+  FOREIGN KEY(groupid) REFERENCES groups(groupid)
 );
 
 CREATE TABLE attendence (
@@ -17,12 +25,14 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
+INSERT INTO groups (groupname, grouptype) VALUES ('Eng23', 'Engineering');
+INSERT INTO groups (groupname, grouptype) VALUES ('Bus18', 'Business');
 
-INSERT INTO students (firstname, lastname) VALUES ('Studen1t_FN','Student1_LN');
-INSERT INTO students (firstname, lastname) VALUES ('Student2_FN','Student2_LN');
-INSERT INTO students (firstname, lastname) VALUES ('Student3_FN','Student3_LN');
-INSERT INTO students (firstname, lastname) VALUES ('Student4_FN','Student4_LN');
-INSERT INTO students (firstname, lastname) VALUES ('Student5_FN','Student5_LN');
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Studen1t_FN','Student1_LN', 1);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student2_FN','Student2_LN', 1);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student3_FN','Student3_LN', 2);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student4_FN','Student4_LN', 2);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student5_FN','Student5_LN', 1);
 
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 1, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 2, 'On Time', '');
