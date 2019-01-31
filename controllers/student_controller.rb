@@ -21,8 +21,8 @@ class StudentController < Sinatra::Base
   get "/students/generate_names" do
     @students = Student.all
     @students.each do |student|
-      student.firstname = Faker::Name.first_name.gsub(/\W/, ' ')
-      student.lastname = Faker::Name.last_name.gsub(/\W/, ' ')
+      student.firstname = Faker::Name.first_name.gsub(/\W/, '')
+      student.lastname = Faker::Name.last_name.gsub(/\W/, '')
       student.save
     end
     groupid = params[:groupid].to_i
@@ -66,8 +66,8 @@ class StudentController < Sinatra::Base
   post "/students/" do
     student = Student.new
 
-    student.firstname = params[:firstname].gsub(/\W/, ' ')
-    student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.firstname = params[:firstname].gsub(/\W/, '')
+    student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
     student.save
 
@@ -80,10 +80,10 @@ class StudentController < Sinatra::Base
 
     student = Student.find studentid
 
-    student.firstname = params[:firstname].gsub(/\W/, ' ')
-    student.lastname = params[:lastname].gsub(/\W/, ' ')
+    student.firstname = params[:firstname].gsub(/\W/, '')
+    student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
-    student.bio = params[:bio].gsub(/\W/, ' ')
+    student.bio = params[:bio].gsub(/\W/, '')
 
     student.save
 
@@ -98,12 +98,4 @@ class StudentController < Sinatra::Base
 
     redirect "/"
   end
-
-  # Search
-  get "/search/result" do
-    parameter = params[:searchquery]
-    @searchresults = Search.search parameter
-    erb :"search/search_results"
-  end
-
 end
