@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS groups;
 
 CREATE TABLE groups (
   groupid SERIAL PRIMARY KEY,
-  groupname CHAR(5),
+  groupname VARCHAR(10),
   grouptype VARCHAR(11)
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
-INSERT INTO groups (groupname, grouptype) VALUES ('None.', 'Unassigned');
+INSERT INTO groups (groupname, grouptype) VALUES ('Unassigned', 'Unassigned');
 INSERT INTO groups (groupname, grouptype) VALUES ('Eng23', 'Engineering');
 INSERT INTO groups (groupname, grouptype) VALUES ('Bus18', 'Business');
 
