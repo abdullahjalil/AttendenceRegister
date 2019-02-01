@@ -25,7 +25,7 @@ CREATE TABLE attendence (
   comment VARCHAR (255)
 );
 
-INSERT INTO groups (groupname, rrouptype) VALUES ('None.'), 'Unassigned');
+INSERT INTO groups (groupname, grouptype) VALUES ('None.'), 'Unassigned');
 INSERT INTO groups (groupname, grouptype) VALUES ('Eng23', 'Engineering');
 INSERT INTO groups (groupname, grouptype) VALUES ('Bus18', 'Business');
 
