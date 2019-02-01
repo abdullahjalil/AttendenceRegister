@@ -11,6 +11,11 @@ class StudentController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
+  # Student index
+  get "/students" do
+    @students = Student.all
+  end
+  
   #new
   get "/students/new" do
     @Student = Student.new
