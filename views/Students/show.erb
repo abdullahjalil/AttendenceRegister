@@ -6,7 +6,6 @@
         <div class="card-body profile-style">
           <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
           <p class="card-text"><%= @students.bio %></p>
-          Belongs to group <a href="/<%= @students.groupid %>" class="card-text"><%= @group.groupname %></a>
         </div>
         <div class="container">
 
@@ -108,19 +107,11 @@
           </thead>
           <tbody>
             <tr>
-<<<<<<< HEAD
               <td ><%= @onTimeCount %>%</td>
               <td ><%= @authorisedCount %>%</td>
               <td ><%= @unAuthorisedCount %>%</td>
               <td ><%= @less5Count %>%</td>
               <td ><%= @more5Count %>%</td>
-=======
-              <td ><%= @onTimeCount.round(2) %>%</td>
-              <td ><%= @authorisedCount.round(2) %>%</td>
-              <td ><%= @unAuthorisedCount.round(2) %>%</td>
-              <td ><%= @more5Count.round(2) %>%</td>
-              <td ><%= @less5Count.round(2) %>%</td>
->>>>>>> master
             </tr>
           </tbody>
         </table>
