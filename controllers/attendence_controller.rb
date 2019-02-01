@@ -54,7 +54,7 @@ class AttendenceController < Sinatra::Base
 
     attendence.date = params[:date]
     attendence.status = params[:status]
-    attendence.comments = params[:comments].gsub(/\W/, '')
+    attendence.comments = params[:comments].gsub(/\W/, ' ')
 
 
 
