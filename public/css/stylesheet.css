@@ -3,8 +3,7 @@
     width: 80px !important;
     height: 50px !important;
     border-radius: 20%;
-  }
-
+}
 
 body {
   background-color: gainsboro;
@@ -14,19 +13,23 @@ th {
   cursor: pointer;
 }
 
-.container_show {
-  padding-left: 0px !important;
-  padding-right: 10px !important;
-
+thead {
+  display: fixed;
 }
-
-.profile {
-  margin-left: 0px !important;
-
+.table-wrapper-scroll-y {
+display: block;
+max-height: 350px;
+overflow-y: auto;
+-ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 #myTable {
   background-color: #e9ecef;
+}
+
+#averageTable {
+  background-color: #343a40!important;
+  color: white;
 }
 
 #navbar {
