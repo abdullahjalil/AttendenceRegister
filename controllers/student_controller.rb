@@ -78,7 +78,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, '')
     student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
-    student.bio = params[:bio].gsub(/\W/, ' ')
+    student.bio = params[:bio].gsub(/[^\w\s]/, '')
 
     groupidcheck = params[:groupid].gsub(/\D/, '')
 
@@ -101,7 +101,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, '')
     student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
-    student.bio = params[:bio].gsub(/\W/, ' ')
+    student.bio = params[:bio].gsub(/[^\w\s]/, '')
 
     student.save
 
