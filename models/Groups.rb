@@ -17,10 +17,10 @@ class Group
     end
   end
 
-  def self.find groupID
+  def self.find groupid
     con = self.open_connection
 
-    sql = "SELECT * FROM groups WHERE groupid=#{groupID}"
+    sql = "SELECT * FROM groups WHERE groupid=#{groupid}"
 
     result = con.exec(sql)
 

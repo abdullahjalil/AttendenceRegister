@@ -41,6 +41,7 @@ class StudentController < Sinatra::Base
     studentid = params[:studentid].to_i
 
     @students = Student.find studentid
+    @group = Student.student_group studentid
 
     @onTimeCount = Attendence.findAverage studentid, "On Time"
     @less5Count = Attendence.findAverage studentid, '<5 Min Late'
