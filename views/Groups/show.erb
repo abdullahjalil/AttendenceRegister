@@ -1,9 +1,8 @@
 
 <div class="jumbotron">
   <h1 class="display-4"><%= @groups.groupname.capitalize %> - <%= @groups.grouptype %></h1>
-  <p class="lead">This is a simple attendance tracking application.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>This button allows randomly generated student information to be inserted into the table.</p>
   <p class="lead">
     <form class="" action="/students/generate_names" method="get">
       <input type="hidden" name="groupid" value="<%= @groups.groupid %>">
@@ -13,11 +12,6 @@
   </p>
 </div>
 
-<a class="btn btn-primary" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
-<form class="btn right" action="/<%= @groups.groupid %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Group" class="btn btn-primary" >
-</form>
   <table id="myTable" class="table">
     <thead class="thead-dark">
       <tr>
@@ -38,3 +32,8 @@
       <% end %>
     </tbody>
   </table>
+  <a class="btn btn-primary" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
+  <form class="btn right" action="/<%= @groups.groupid %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Group" class="btn btn-primary" >
+  </form>
