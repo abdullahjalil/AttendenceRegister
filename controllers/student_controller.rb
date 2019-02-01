@@ -12,10 +12,11 @@ class StudentController < Sinatra::Base
   set :views, Proc.new { File.join(root, "views") }
 
   # Student index
-  get "/students" do
+  get "/students/index" do
     @students = Student.all
+    erb :"Students/index"
   end
-  
+
   #new
   get "/students/new" do
     @Student = Student.new
