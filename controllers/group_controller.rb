@@ -24,7 +24,7 @@ class GroupController < Sinatra::Base
   end
 
   get "/1" do
-    id = params[:id].to_i
+    id = 1
 
     @students = Student.group id
     @groups = Group.find id
