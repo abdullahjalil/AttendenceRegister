@@ -70,13 +70,13 @@ class GroupController < Sinatra::Base
     redirect "/#{groupid}"
   end
 
-    # Delete
-    delete "/:id" do
-      id = params[:id].to_i
+  # Delete
+  delete "/:id" do
+    id = params[:id].to_i
 
-      Group.destroy id
+    Group.destroy id
 
-      redirect "/"
-    end
+    redirect "/"
+  end
 
 end
