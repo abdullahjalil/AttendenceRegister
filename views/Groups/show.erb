@@ -13,6 +13,11 @@
   </p>
 </div>
 
+<a class="btn btn-primary" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
+<form class="btn right" action="/<%= @groups.groupid %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Group" class="btn btn-primary" >
+</form>
   <table id="myTable" class="table">
     <thead class="thead-dark">
       <tr>
@@ -31,8 +36,5 @@
         <td><a href="/students/<%= student.studentid %>"><%= student.groupid %></a></td>
       </tr>
       <% end %>
-      <button type="button" name="button">
-      <a class="nav-link active" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
-      </button>
     </tbody>
   </table>

@@ -10,7 +10,6 @@
       <tr>
         <th scope="col">Group ID</th>
         <th scope="col">Group Name</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,10 +17,6 @@
       <tr>
         <td><a href="/<%= group.groupid %>"><%= group.groupid %></a></td>
         <td><a href="/<%= group.groupid %>"><%= group.groupname.capitalize %></a></td>
-        <td><form class="btn right" action="/<%= group.groupid %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete Group" class="btn btn-primary" >
-        </form></td>
       </tr>
       <% end %>
     </tbody>
