@@ -6,7 +6,7 @@
         <div class="card-body">
           <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
           <p class="card-text"><%= @students.bio %></p>
-          <a href="/<%= @students.groupid %>" class="card-text"><%= @group.groupname %></a>
+          Belongs to group <a href="/<%= @students.groupid %>" class="card-text"><%= @group.groupname %></a>
         </div>
         <div class="row justify-content-around">
           <form class="btn left" action="" method="">
