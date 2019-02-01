@@ -38,3 +38,7 @@ overflow-y: auto;
   top: 0;
   z-index: 1;
 }
+
+.add_edit_form {
+  background-color: #e9ecef;
+}
