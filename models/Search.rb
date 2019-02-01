@@ -20,13 +20,14 @@ class Search
         parameterArray = parameter.tr("0-9", "").gsub(/\s+/m, ' ').strip.split(" ")
 
         if parameterArray.count == 1
-            parameterArray[1] = 'false'
+            parameterArray[1] = ""
+
         end
 
         sqlLetters = "SELECT DISTINCT * FROM students
         WHERE
         upper(firstname) LIKE upper('#{parameterArray[0]}%')
-        OR
+        AND
         upper(lastname) LIKE upper('#{parameterArray[1]}%')"
         name = true
       end

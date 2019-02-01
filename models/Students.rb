@@ -45,7 +45,7 @@ class Student
       sql = "UPDATE students SET firstname='#{self.firstname}', lastname='#{self.lastname}', groupid='#{self.groupid}', bio='#{self.bio}' WHERE studentid = #{self.studentid}"
     else
       # add
-      sql = "INSERT INTO students (firstname, lastname, groupid) VALUES ('#{self.firstname}','#{self.lastname}','#{self.groupid}')"
+      sql = "INSERT INTO students (firstname, lastname, groupid, bio) VALUES ('#{self.firstname}','#{self.lastname}','#{self.groupid}','#{self.bio}')"
     end
     #
     #
