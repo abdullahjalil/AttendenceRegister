@@ -11,6 +11,12 @@ class StudentController < Sinatra::Base
   # Sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
+  # Student index
+  get "/students/index" do
+    @students = Student.all
+    erb :"Students/index"
+  end
+
   #new
   get "/students/new" do
     @Student = Student.new
@@ -83,7 +89,7 @@ class StudentController < Sinatra::Base
     student.firstname = params[:firstname].gsub(/\W/, '')
     student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
-    student.bio = params[:bio].gsub(/\W/, '')
+    student.bio = params[:bio].gsub(/\W/, ' ')
 
     student.save
 

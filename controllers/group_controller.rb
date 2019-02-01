@@ -67,7 +67,7 @@ class GroupController < Sinatra::Base
 
     group.save
 
-    redirect "/"
+    redirect "/#{groupid}"
   end
 
 end
