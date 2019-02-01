@@ -7,7 +7,7 @@ class SearchController < Sinatra::Base
   set :views, Proc.new { File.join(root, "views") }
 
   get "/search/result" do
-    parameter = params[:searchquery]
+    parameter = params[:searchquery].gsub(/[^\w\s]/, '')
 
     @searchresults = Search.search parameter
     erb :"search/search_results"

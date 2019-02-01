@@ -102,7 +102,7 @@ class StudentController < Sinatra::Base
   end
 
   # Delete
-  delete "/:id" do
+  delete "/students/:id" do
     id = params[:id].to_i
 
     Student.destroy id
