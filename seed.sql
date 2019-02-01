@@ -29,11 +29,11 @@ INSERT INTO groups (groupname, rrouptype) VALUES ('None.'), 'Unassigned');
 INSERT INTO groups (groupname, grouptype) VALUES ('Eng23', 'Engineering');
 INSERT INTO groups (groupname, grouptype) VALUES ('Bus18', 'Business');
 
-INSERT INTO students (firstname, lastname, groupid) VALUES ('Studen1t_FN','Student1_LN', 1);
-INSERT INTO students (firstname, lastname, groupid) VALUES ('Student2_FN','Student2_LN', 1);
-INSERT INTO students (firstname, lastname, groupid) VALUES ('Student3_FN','Student3_LN', 2);
-INSERT INTO students (firstname, lastname, groupid) VALUES ('Student4_FN','Student4_LN', 2);
-INSERT INTO students (firstname, lastname, groupid) VALUES ('Student5_FN','Student5_LN', 1);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Studen1t_FN','Student1_LN', 2);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student2_FN','Student2_LN', 2);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student3_FN','Student3_LN', 3);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student4_FN','Student4_LN', 3);
+INSERT INTO students (firstname, lastname, groupid) VALUES ('Student5_FN','Student5_LN', 2);
 
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 1, 'On Time', '');
 INSERT INTO attendence (dateofattendence, studentid, status, comment) VALUES ('2019/01/28', 2, 'On Time', '');
