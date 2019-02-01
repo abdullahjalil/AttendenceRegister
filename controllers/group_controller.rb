@@ -23,6 +23,16 @@ class GroupController < Sinatra::Base
     erb :"Groups/add"
   end
 
+  get "/1" do
+    id = params[:id].to_i
+
+    @students = Student.group id
+    @groups = Group.find id
+    # @attendence = Attendence.find id
+
+    erb :"Groups/unassigned"
+
+  end
   # Show students in group
   get "/:id" do
     id = params[:id].to_i
