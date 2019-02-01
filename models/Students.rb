@@ -112,7 +112,7 @@ class Student
   def self.all_student_group
     con = self.open_connection
 
-    sql = "SELECT studentid, firstname, lastname, groupid, groupname FROM students s
+    sql = "SELECT * FROM students s
     INNER JOIN groups g on s.groupid = g.groupid"
     results = con.exec(sql)
     students = results.map do |student_data|
