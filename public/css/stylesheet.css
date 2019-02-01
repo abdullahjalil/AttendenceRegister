@@ -23,6 +23,10 @@ th {
     table-layout:fixed;
 }
 
+.st_thead {
+  width: calc( 100% - 2em );
+}
+
 td.comment {
   max-width: 300px;
   word-wrap: break-word;
