@@ -34,7 +34,7 @@ class GroupController < Sinatra::Base
   end
 
   get "/group/1/edit" do
-    erb :"/"
+    redirect "/"
   end
 
   # Show students in group
