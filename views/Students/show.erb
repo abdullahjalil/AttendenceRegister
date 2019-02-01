@@ -92,11 +92,11 @@
           </thead>
           <tbody>
             <tr>
-              <td ><%= @onTimeCount %>%</td>
-              <td ><%= @authorisedCount %>%</td>
-              <td ><%= @unAuthorisedCount %>%</td>
-              <td ><%= @more5Count %>%</td>
-              <td ><%= @less5Count %>%</td>
+              <td ><%= @onTimeCount.round(2) %>%</td>
+              <td ><%= @authorisedCount.round(2) %>%</td>
+              <td ><%= @unAuthorisedCount.round(2) %>%</td>
+              <td ><%= @more5Count.round(2) %>%</td>
+              <td ><%= @less5Count.round(2) %>%</td>
             </tr>
           </tbody>
         </table>
