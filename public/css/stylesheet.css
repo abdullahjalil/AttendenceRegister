@@ -42,3 +42,7 @@ overflow-y: auto;
 .add_edit_form {
   background-color: #e9ecef;
 }
+
+.form-inline {
+  color: #e9ecef;
+}
