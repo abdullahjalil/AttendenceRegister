@@ -48,7 +48,7 @@ class Group
   def self.destroy id
     con = self.open_connection
 
-    sql = "UPDATE students SET groupid=0 WHERE groupid = #{id};"
+    sql = "UPDATE students SET groupid=1 WHERE groupid = #{id};"
 
     con.exec(sql)
 
