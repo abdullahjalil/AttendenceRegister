@@ -1,0 +1,13 @@
+<form class="" action="/group/<%= @group.groupid %>" method="post">
+
+  <% if @group.groupid %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <input type="text" name="groupname" placeholder="Group Name">
+  <select name="grouptype">
+    <option value="Engineering">Engineering</option>
+    <option value="Business">Business</option>
+  </select>
+  <input type="submit" value="Add Group">
+</form>

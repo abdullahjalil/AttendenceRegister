@@ -17,6 +17,12 @@ class GroupController < Sinatra::Base
     erb :"Groups/index"
   end
 
+  # New group
+  get "/group/new" do
+    @group = Group.new
+    erb :"Groups/add"
+  end
+
   # Show students in group
   get "/:id" do
     id = params[:id].to_i
@@ -29,9 +35,31 @@ class GroupController < Sinatra::Base
     erb :"Groups/show"
   end
 
+  #edit
+  get "/group/:groupid/edit" do
+    groupid = params[:groupid].to_i
+    @group = Group.find groupid
+    erb :"Groups/edit"
+  end
+
   # Create Group
   post "/" do
     group = Group.new
+
+    group.groupid = params[:groupid]
+    group.groupname = params[:groupname].gsub(/\W/, ' ')
+    group.grouptype = params[:grouptype]
+
+    group.save
+
+    redirect "/"
+  end
+
+  # Update
+  put "/group/:groupid" do
+    groupid = params[:groupid].to_i
+
+    group = Group.find groupid
 
     group.groupid = params[:groupid]
     group.groupname = params[:groupname].gsub(/\W/, ' ')
