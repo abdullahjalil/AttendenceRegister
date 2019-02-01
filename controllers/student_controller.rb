@@ -79,7 +79,14 @@ class StudentController < Sinatra::Base
     student.lastname = params[:lastname].gsub(/\W/, '')
     student.groupid = params[:groupid]
     student.bio = params[:bio].gsub(/\W/, ' ')
-    
+
+    groupidcheck = params[:groupid].gsub(/\D/, '')
+
+    if groupidcheck == ''
+      groupidcheck = 1
+    end
+
+    student.groupid = groupidcheck
     student.save
 
     redirect "/"
