@@ -8,6 +8,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Group ID</th>
+        <th>Group Name</th>
       </tr>
     </thead>
     <% @students.each do |student| %>
@@ -16,6 +17,7 @@
       <td><a href="/students/<%= student.studentid %>"><%= student.firstname %></a></td>
       <td><a href="/students/<%= student.studentid %>"><%= student.lastname %></a></td>
       <td><a href="/students/<%= student.studentid %>"><%= student.groupid%></a></td>
+      <td><a href="/students/<%= student.studentid %>"><%= student.groupname%></a></td>
     </tr>
     <% end %>
   </table>

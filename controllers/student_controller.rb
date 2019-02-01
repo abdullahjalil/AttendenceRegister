@@ -13,7 +13,9 @@ class StudentController < Sinatra::Base
 
   # Student index
   get "/students/index" do
-    @students = Student.all
+
+    @students = Student.all_student_group
+
     erb :"Students/index"
   end
 
