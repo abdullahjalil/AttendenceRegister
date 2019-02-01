@@ -45,17 +45,17 @@ class Group
   end
 
   # delete data entry
-  # def self.destroy id
-  #   con = self.open_connection
-  #
-  #   sql1 = "DELETE FROM attendence WHERE studentid = #{id}"
-  #
-  #   con.exec(sql1)
-  #
-  #   sql = "DELETE FROM students WHERE studentid = #{id}"
-  #
-  #   con.exec(sql)
-  # end
+  def self.destroy id
+    con = self.open_connection
+
+    sql = "UPDATE students SET groupid=0 WHERE groupid = #{id};"
+
+    con.exec(sql)
+
+    sql1 = "DELETE FROM groups WHERE groupid = #{id};"
+
+    con.exec(sql1)
+  end
 
   def self.hydrate group_data
     group = Group.new
