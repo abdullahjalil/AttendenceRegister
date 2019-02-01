@@ -1,4 +1,3 @@
-
 .logo {
     width: 80px !important;
     height: 50px !important;
@@ -15,7 +14,25 @@ th {
 
 thead {
   display: fixed;
+  width: 100%;
 }
+
+.profile {
+  display: block;
+  max-height: 400px;
+}
+.card-body {
+  display: block;
+  max-height: 180px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border-color: black !important;
+}
+/* .profile-style{
+  background-color: #343a40!important;
+  color: white;
+} */
+
 .table-wrapper-scroll-y {
 display: block;
 max-height: 350px;
@@ -23,20 +40,14 @@ overflow-y: auto;
 -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-#myTable {
+#studentTable {
   background-color: #e9ecef;
 }
+
 
 #averageTable {
   background-color: #343a40!important;
   color: white;
-}
-
-#navbar {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  z-index: 1;
 }
 
 .add_edit_form {
