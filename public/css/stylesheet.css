@@ -12,9 +12,20 @@ th {
   cursor: pointer;
 }
 
-thead {
-  display: fixed;
-  width: 100%;
+.st_tbody {
+    display: block;
+    height:300px;
+    overflow:auto;
+}
+.st_thead, .st_tbody .st_tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+td.comment {
+  max-width: 300px;
+  word-wrap: break-word;
 }
 
 .profile {
@@ -26,18 +37,12 @@ thead {
   max-height: 180px;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  border-color: black !important;
+  border: black !important;
 }
-/* .profile-style{
-  background-color: #343a40!important;
-  color: white;
-} */
 
 .table-wrapper-scroll-y {
 display: block;
 max-height: 350px;
-overflow-y: auto;
--ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 #studentTable {
