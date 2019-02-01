@@ -13,6 +13,11 @@
   </p>
 </div>
 
+<a class="btn btn-primary" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
+<form class="btn right" action="/<%= @groups.groupid %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Group" class="btn btn-primary" >
+</form>
   <table id="myTable" class="table">
     <thead class="thead-dark">
       <tr>

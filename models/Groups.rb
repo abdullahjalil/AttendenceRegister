@@ -17,10 +17,10 @@ class Group
     end
   end
 
-  def self.find groupID
+  def self.find groupid
     con = self.open_connection
 
-    sql = "SELECT * FROM groups WHERE groupid=#{groupID}"
+    sql = "SELECT * FROM groups WHERE groupid=#{groupid}"
 
     result = con.exec(sql)
 
@@ -33,7 +33,7 @@ class Group
 
     if (self.groupid)
       # update
-      sql = "UPDATE groups SET groupname='#{self.groupname}' WHERE groupid = #{self.groupid}"
+      sql = "UPDATE groups SET groupname='#{self.groupname}', grouptype='#{self.grouptype}' WHERE groupid = #{self.groupid}"
     else
       # add
       sql = "INSERT INTO groups (groupname, grouptype) VALUES ('#{self.groupname}', '#{self.grouptype}')"
@@ -45,17 +45,17 @@ class Group
   end
 
   # delete data entry
-  # def self.destroy id
-  #   con = self.open_connection
-  #
-  #   sql1 = "DELETE FROM attendence WHERE studentid = #{id}"
-  #
-  #   con.exec(sql1)
-  #
-  #   sql = "DELETE FROM students WHERE studentid = #{id}"
-  #
-  #   con.exec(sql)
-  # end
+  def self.destroy id
+    con = self.open_connection
+
+    sql = "UPDATE students SET groupid=0 WHERE groupid = #{id};"
+
+    con.exec(sql)
+
+    sql1 = "DELETE FROM groups WHERE groupid = #{id};"
+
+    con.exec(sql1)
+  end
 
   def self.hydrate group_data
     group = Group.new

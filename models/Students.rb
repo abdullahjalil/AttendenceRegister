@@ -1,7 +1,7 @@
 class Student
 require "faker"
 
-  attr_accessor :studentid, :firstname, :lastname, :groupid, :bio
+  attr_accessor :studentid, :firstname, :lastname, :groupid, :bio, :groupname
 
   def self.open_connection
      con = PG.connect(dbname: "attendence_tracker")
@@ -77,13 +77,11 @@ require "faker"
       student
     end
 
+
     def self.group id
       con = self.open_connection
 
-      # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
-
       sql = "SELECT * FROM students WHERE groupid=#{id}"
-      # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
 
       results = con.exec(sql)
 
@@ -92,4 +90,26 @@ require "faker"
       end
     end
 
+    def self.group_hydrate student_data
+      student = Student.new
+
+      student.studentid = student_data['studentid']
+      student.groupid = student_data['groupid']
+      student.groupname = student_data['groupname']
+      student
+    end
+
+    def self.student_group id
+      con = self.open_connection
+
+      # sql = "SELECT * FROM attendence a INNER JOIN students s ON a.studentid = s.studentid WHERE studentid=#{studentID}"
+
+      sql = "SELECT * FROM students s
+      INNER JOIN groups g on s.groupid = g.groupid WHERE studentid=#{id}"
+      # sql2 = "SELECT * FROM attendence WHERE studentid=#{studentID}"
+
+      result = con.exec(sql)
+
+      students = self.group_hydrate result[0]
+    end
   end

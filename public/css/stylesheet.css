@@ -58,3 +58,7 @@ max-height: 350px;
 .add_edit_form {
   background-color: #e9ecef;
 }
+
+.form-inline {
+  color: #e9ecef;
+}
